@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <!-- <link rel="stylesheet" href="{% static '/css/mystyle.css' %}"> -->
+    <link rel="stylesheet" href="{% static '/css/secondaryStyle.css' %}">
+    <title>EHospitale</title>
+    {% block title %} {% endblock %}
+</head>
+
+<body>
+    <header class="header">
+        <div class="navigation-wraper">
+            <div class="logo"><img src="" alt="EHospitale" class="e-hospitale"></div>
+            <div class="hamburger-menu-icon">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </div>
+            <div class="navigation" data-visible="false">
+                <nav>
+                    <ul class="navigation-bar">
+                        <li class="navigation-item"><a href="/templates/blog.html" class="navigation-option">Blog</a>
+                        </li>
+                        <li class="navigation-item"><a href="#" class="navgation-option">Services</a></li>
+                        <li class="navigation-item"><a href="#" class="navgation-option">About</a></li>
+                    </ul>
+                </nav>
+                <button class="login-btn all-btn login-btn-popup">Sign In</button>
+            </div>
+        </div>
+    </header>
+    
+    <dialog class="login-as login-as-status-btn login-options-for-user">
+        <div class="login-as-box">
+            <button type="button" class="close-btn-for-login-options close-btn-xx clos-btn-xxx">
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+            <h3 class="status">I want to Log In as-</h3>
+            <div class="login-as-options">
+                <button type="button" class="login-as-btn login-as-patient">Patient</button>
+                <button type="button" class="login-as-btn login-as-doctor">Doctor</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog class="sign-up-form-modal authentication-form">
+        <!-- <div class="authentication-form"> -->
+        <form action="" method="dialog">
+            <button type="button" class="close sign-up-form-close-btn"> <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+            <h2>Sign Up</h2>
+            <div class="user-info-input">
+                <input type="text" placeholder="First Name" required>
+            </div>
+            <div class="user-info-input">
+                <input type="text" placeholder="Last Name" required>
+            </div>
+            <div class="user-info-input">
+                <input type="email" placeholder="Email or Phone Number" required>
+            </div>
+            <div class="user-info-input">
+                <input type="password" placeholder="Password" required>
+            </div>
+            <div class="user-info-input">
+                <input type="password" placeholder="Re-type Password" required>
+            </div>
+            <div class="user-info-checkbox">
+                <input type="checkbox">
+                <span>Remember Me.</span>
+            </div>
+            <button class="sign-in-btn all-btn">Sign Up</button>
+            <div class="user-info-links">
+                <p>Already have an account? <a href="#">Sign In.</a></p>
+                <p><a href="#">Forgot Password</a></p>
+            </div>
+        </form>
+        <!-- </div> -->
+    </dialog>
+
+    <dialog class="login-form-patient-modal authentication-form">
+        <!-- <div class="login-form"> -->
+        <form action="" method="dialog">
+            <button type="button" class="close login-form-close-btn"> <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+            <h2>Login</h2>
+            <div class="user-info-input">
+                <input type="email" placeholder="Email or Phone Number" required>
+            </div>
+            <div class="user-info-input">
+                <input type="text" placeholder="Password" required>
+            </div>
+            <div class="user-info-checkbox">
+                <input type="checkbox">
+                <span>Remember Me.</span>
+            </div>
+            <button class="sign-in-btn all-btn">Login</button>
+            <div class="user-info-links">
+                <p>Don't have an account? <a href="#">Create One.</a></p>
+                <a href="#">Forgot Password</a>
+            </div>
+        </form>
+        <!-- </div> -->
+    </dialog>
+
+    <dialog class="login-form-doctor-modal authentication-form">
+        <!-- <div class="login-form"> -->
+        <form action="" method="dialog">
+            <button type="button" class="close login-form-close-btn-doctor"> <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+            <h2>Login</h2>
+            <div class="user-info-input">
+                <input type="email" placeholder="Email or Phone Number" required>
+            </div>
+            <div class="user-info-input">
+                <input type="text" placeholder="Password" required>
+            </div>
+            <div class="user-info-checkbox">
+                <input type="checkbox">
+                <span>Remember Me.</span>
+            </div>
+            <button class="sign-in-btn all-btn">Login</button>
+            <div class="user-info-links">
+                <p>Don't have an account? <a href="#">Create One.</a></p>
+                <a href="#">Forgot Password</a>
+            </div>
+        </form>
+        <!-- </div> -->
+    </dialog>
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+        <div class="footer-div">
+            <div class="footer-div-inside">
+                <ul class="footer-item">
+                    <li class="item"><a href="#" class="footer-item">Services</a></li>
+                    <li class="item"><a href="#" class="footer-item">Our Blog</a></li>
+                    <li class="item"><a href="#" class="footer-item">About Us</a></li>
+                    <li class="item"><a href="#" class="footer-item">Privecy & Terms</a></li>
+                    <li class="item"><a href="#" class="footer-item">Helps</a></li>
+                </ul>
+            </div>
+            <div class="footer-div-inside">
+                <ul class="footer-item">
+                    <li class="item"><a href="#" class="footer-item">Tools</a></li>
+                    <li class="item"><a href="#" class="footer-item">Departments</a></li>
+                    <li class="item"><a href="#" class="footer-item">Laboratory</a></li>
+                    <li class="item"><a href="#" class="footer-item">Basic Queries</a></li>
+                    <li class="item"><a href="#" class="footer-item">Locations</a></li>
+                </ul>
+            </div>
+            <div class="footer-div-inside social-div">
+                <div class="location">
+                    <h3>Our Bangladesh Office.</h3>
+                    <P>Phone: +88017XXXXXXX <br> 38/7 Kazi-Nazrul-Islam Avenue, Farmgate.</P>
+                </div>
+                <div class="social-links">
+                    <img src="/static/icon/facebook.png" alt="Social" class="facebook">
+                    <img src="/static/icon/instagram.png" alt="Social" class="instagram">
+                    <img src="/static/icon/linkedin.png" alt="Social" class="linkedin">
+                    <img src="/static/icon/twitter.png" alt="Social" class="twitter">
+                </div>
+            </div>
+        </div>
+        <div class="copy-right">@all Right Preserved by Ehospitale.</div>
+    </footer>
+    <script src="{% static '/js/script.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
+:root {
+  --bg-color: #fff6f0;
+  --text-color: #000000;
+  --color-primary: #06fe65;
+  --color-secondary: #ffdcc7;
+  --color-accent: #6001f9;
+  --color-ternary: #fdafbc;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  font-family: "Roboto", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+header {
+  display: block;
+}
+
+.navigation-wraper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em 1em 2em;
+  position: relative;
+}
+
+.navigation {
+  display: flex;
+  gap: 3em;
+}
+
+.navigation-bar {
+  display: flex;
+  gap: 2em;
+  font-size: 15px;
+  font-weight: 700;
+  list-style-type: none;
+}
+
+header ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.all-btn {
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 1em;
+  border: none;
+  outline: none;
+  background-color: var(--color-primary);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.login-btn {
+  padding: 0.5em 2.5em 0.5em 2.5em;
+}
+
+.all-btn:hover {
+  /* outline: 2px solid black; */
+  transform: translateY(-3px);
+  box-shadow: 0 3px 15px var(--color-primary);
+}
+
+.hamburger-menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+main div.container {
+  width: 100%;
+  height: 87vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  background-color: var(--color-secondary);
+}
+
+main button.sign-up-btn {
+  padding: 1em 2em 1em 2em;
+}
+
+/* main div.container h1 {
+  z-index: 100;
+} */
+
+/* main div.container::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+  opacity: 0.4;
+  background-color: var(--color-secondary);
+} */
+
+main div.ehospitale-info {
+  position: relative;
+  height: 200px;
+  display: flex;
+  margin: 1.5em;
+}
+
+main div.ehospitale-info div.why-to {
+  width: calc(100% / 4);
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--color-secondary);
+  transition: transform 0.3s;
+}
+
+main div.ehospitale-info div.why-to div.image img {
+  width: 50px;
+  aspect-ratio: 1/1;
+}
+
+main div.ehospitale-info div.why-to:hover {
+  color: var(--bg-color);
+  background-color: var(--color-accent);
+  transform: translateY(-10px);
+}
+
+@media (max-width: 620px) {
+  .navigation {
+    gap: 2em;
+  }
+
+  .navigation-bar {
+    gap: 1.5em;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navigation {
+    flex-direction: column;
+    position: fixed;
+    inset: 0 0 0 40%;
+    padding: 7em 2em;
+    z-index: 1000;
+    background-color: #fdafbc;
+    transform: translateX(100%);
+    transition: transform 500ms ease-out;
+  }
+
+  .navigation[data-visible="true"] {
+    transform: translateX(0%);
+  }
+
+  .navigation-bar {
+    flex-direction: column;
+  }
+
+  .login-btn {
+    width: 60%;
+    padding: 1em;
+    margin-left: 2.4em;
+  }
+
+  .hamburger-menu-icon {
+    display: block;
+    z-index: 1001;
+  }
+
+  main div.ehospitale-info div.why-to {
+    font-size: 13px;
+  }
+
+  main div.ehospitale-info div.why-to div.image img {
+    width: 40px;
+    aspect-ratio: 1/1;
+  }
+}
+
+@media (max-width: 400px) {
+  .navigation {
+    padding: 7em 0.5em;
+  }
+
+  main div.ehospitale-info div.why-to {
+    font-size: 10px;
+  }
+
+  main div.ehospitale-info div.why-to div.image img {
+    width: 25px;
+    aspect-ratio: 1/1;
+  }
+}
+
+.footer-div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: var(--color-secondary);
+}
+
+.footer-div-inside {
+  height: 100%;
+}
+
+.footer-div-inside:first-child {
+  width: 25%;
+}
+
+.footer-div-inside:nth-child(2) {
+  width: 25%;
+}
+
+.footer-div-inside:last-child {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.footer-div-inside .footer-item li {
+  list-style-type: none;
+  font-size: 14px;
+}
+
+.footer-div-inside .footer-item li a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.social-div .location h3 {
+  font-size: 17px;
+  margin-bottom: 0;
+}
+
+.social-div .location p {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.social-links img {
+  width: 30px;
+  aspect-ratio: 1/1;
+  margin: 0 0.5em 0 0.5em;
+}
+
+.copy-right {
+  text-align: center;
+  font-size: 10px;
+  padding: 0.5em;
+  opacity: 0.5;
+}
+
+@media (max-width: 500px) {
+  .footer-div {
+    flex-direction: column;
+  }
+
+  .footer-div-inside {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-div-inside:first-child {
+    width: 100%;
+  }
+
+  .footer-div-inside:nth-child(2) {
+    width: 100%;
+    display: none;
+  }
+
+  .footer-div-inside:last-child {
+    width: 100%;
+    padding-bottom: 1em;
+  }
+
+  .footer-item {
+    margin-left: -15px;
+    margin-bottom: -5px;
+  }
+
+  .footer-item li {
+    display: inline-block;
+    padding-right: 4px;
+    padding-bottom: 2px;
+    margin-right: 15px;
+    border-right: 1px solid black;
+  }
+}
+
+/* @media (max-width: 576px) {} 
+@media (min-width: 576px) {} 
+@media (max-width: 768px) {} 
+@media (max-width: 992px) {} 
+@media (max-width: 1200px) {} 
+@media (max-width: 1400px) {}  */
+
+.login-as {
+  width: 300px;
+  height: 200px;
+  padding: 0;
+  border-radius: 1em;
+  background-color: white;
+  box-shadow: 0 3px 3px 3px lightgray;
+  border: none;
+}
+
+.login-as-box {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-btn-xx {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+}
+
+.login-as-options {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.login-as-btn:first-child {
+  color: white;
+  background-color: var(--color-accent);
+}
+
+.login-as-btn:first-child:hover {
+  box-shadow: 0 0 5px 2px var(--color-accent);
+}
+
+.login-as-btn {
+  width: 95px;
+  height: 50px;
+  font-size: 15px;
+  font-weight: 550;
+  padding: 0.8em 1em;
+  text-align: center;
+  border: none;
+  border-radius: 1em;
+  background-color: var(--color-primary);
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.login-as-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 5px 2px var(--color-primary);
+}

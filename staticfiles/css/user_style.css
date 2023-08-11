@@ -1,0 +1,340 @@
+:root {
+    --header-height: 60px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    background-color: aqua;
+    box-shadow: 0 4px 5px 1px lightgray;
+    z-index: 1000;
+}
+
+.user-top-navigation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-shrink: initial; */
+    padding: 0.5em 1em;
+}
+
+.user-toggle-menu {
+    display: flex;
+    align-items: center;
+}
+
+.user-toggle-menu-btn {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    margin-right: 1em;
+    cursor: pointer;
+    border-radius: 2em;
+}
+
+.user-toggle-menu-btn:hover {
+    background-color: lightgray;
+}
+
+.user-search-bar {
+    position: relative;
+    width: 250px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.actual-search-bar {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    border: 0;
+    padding: 0.5em 1em;
+}
+
+.actual-search-bar:hover {
+    background: lightgray;
+}
+
+.user-search-icon {
+    position: absolute;
+    top: calc(35/2px);
+    right: 0.5em;
+    margin: 0;
+}
+
+.user-toggle-navigation {
+    position: relative;
+    display: flex;
+}
+
+.user-toggle-navigation-btn {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    border-radius: 2em;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em 1em;
+}
+
+.user-toggle-navigation-btn:hover {
+    background: lightgray;
+}
+
+.profile-toggle-img {
+    width: 45px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    margin-right: 0.5em;
+}
+
+.user-navigation-list-part {
+    display: none;
+    position: absolute;
+    width: 200px;
+    top: 50px;
+    right: 10px;
+    padding: 0 0.5em;
+    border-radius: 0.5em;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    box-shadow: 0 3px 5px 1px lightgray;
+}
+
+.user-toggle-navigation-list {
+    width: 100%;
+    list-style: none;
+}
+
+.user-toggle-navigation-list-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0.3em 0;
+    height: 40px;
+    background-color: white;
+    border-radius: 0.5em;
+    background-color: aqua;
+    overflow: hidden;
+}
+
+.user-toggle-navigation-list-item .user-toggle-navigation-link {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0em 1em;
+}
+
+.user-toggle-navigation-list-item .user-toggle-navigation-link:hover {
+    background-color: lightgray;
+}
+
+.user-logout {
+    width: 100%;
+    text-align: start;
+    height: 40px;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    margin-bottom: 0.5em;
+    border: none;
+}
+
+.user-logout:hover {
+    background-color: red;
+    color: white;
+}
+
+
+.user-container {
+    display: flex;
+    gap: 1em;
+}
+
+.user-sidebar {
+    position: relative;
+    width: 80px;
+    height: calc(100vh - var(--header-height));
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aqua;
+    transition: width 200ms ease-in-out;
+}
+
+.user-top-sidebar {
+    width: 100%;
+    padding: 1em 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2em;
+    border-bottom: 1px solid lightgray;
+}
+
+.user-sidebar .user-name {
+    display: none;
+}
+
+.user-sidebar.open .user-name {
+    display: block;
+}
+
+.user-profile-photo-link {
+    width: 45px;
+    height: 45px;
+}
+
+.user-sidebar-profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 3em;
+    outline: 2px solid rgb(33, 140, 255);
+}
+
+.user-sidebar.open .user-profile-photo-link {
+    width: 80px;
+    height: 80px;
+}
+
+.user-middle-sidebar {
+    width: 100%;
+}
+
+.user-middle-sidebar-list {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+}
+
+.user-middle-sidebar-list-item {
+    width: 100%;
+    position: relative;
+}
+
+.user-middle-sidebar-list-item-link {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0 1em 0;
+    margin-bottom: 0.5em;
+    border-radius: 1em;
+    color: black;
+}
+
+.user-middle-sidebar-list-item-link:hover {
+    background-color: lightgray;
+}
+
+.user-middle-sidebar-list-item:active::before,
+.user-middle-sidebar-list-item:focus:before {
+    content: '';
+    width: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: red;
+}
+
+.user-sidebar .user-middle-sidebar-list-item-name {
+    display: none;
+}
+
+.user-sidebar.open .user-middle-sidebar-list-item-name {
+    display: block;
+}
+
+.user-bottom-sidebar {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-sidebar.open {
+    width: 250px;
+    font-size: 18px;
+    font-weight: 520;
+}
+
+.user-sidebar.open .user-name {
+    margin-top: 1.5em;
+}
+
+.user-sidebar.open .user-middle-sidebar-list-item-link {
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1.5em;
+}
+
+.user-sidebar.open .user-sidebar-icon {
+    margin-right: 1em;
+}
+
+.user-bottom-logout {
+    font-size: 13px;
+}
+
+.user-sidebar.open .user-bottom-logout {
+    text-align: center;
+    font-size: 15px;
+    width: 90%;
+    margin-left: 0.8em;
+}
+
+main {
+    width: 100%;
+}
+
+.user-content-container {
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    padding-top: 1em;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.user-content-container::-webkit-scrollbar {
+    display: block;
+    width: 1em;
+}
+
+.user-content-container::-webkit-scrollbar-track {
+    background-color: rgb(255, 255, 255);
+}
+
+.user-content-container::-webkit-scrollbar-thumb {
+    height: 10%;
+    border-radius: 1em;
+    background-color: lightgray;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
