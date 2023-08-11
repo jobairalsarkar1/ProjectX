@@ -1,3 +1,5 @@
 from django.contrib import admin
+from laboratory.models import LabResult, LabTest
 
-# Register your models here.
+admin.site.register(LabResult)
+admin.site.register(LabTest)
