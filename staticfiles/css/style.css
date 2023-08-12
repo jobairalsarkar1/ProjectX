@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@300;500&display=swap");
 
 :root {
   --bg-color: #fff6f0;
@@ -6,10 +7,12 @@
   --color-primary: #06fe65;
   --color-secondary: #ffdcc7;
   --color-accent: #6001f9;
-  --color-ternary: #fdafbc;
+  --footer-color: #01131e;
+  --footer-text-color: #dcf2fe;
 }
 
 body {
+  position: relative;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
@@ -31,8 +34,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em 2em 1em 2em;
+  padding: 1em 2.5em 1em 2.5em;
   position: relative;
+  box-shadow: 0 0 5px gray;
 }
 
 .navigation {
@@ -69,7 +73,6 @@ header ul li a {
 }
 
 .all-btn:hover {
-  /* outline: 2px solid black; */
   transform: translateY(-3px);
   box-shadow: 0 3px 15px var(--color-primary);
 }
@@ -87,30 +90,32 @@ main div.container {
   align-items: center;
   position: relative;
   flex-direction: column;
-  background-color: var(--color-secondary);
+  background-image: url(/static/icon/e_background_02.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main .container-things {
+  width: 60%;
+  color: black;
+  word-spacing: 10px;
+  background: transparent;
+  text-align: center;
+  /* font-family: "Roboto", sans-serif; */
+  font-family: "Montserrat", sans-serif;
 }
 
 main button.sign-up-btn {
-  padding: 1em 2em 1em 2em;
+  padding: 1.2em 2.5em 1.2em 2.5em;
+  font-size: 20px;
 }
-
-/* main div.container h1 {
-  z-index: 100;
-} */
-
-/* main div.container::after {
-  content: "";
-  inset: 0;
-  position: absolute;
-  opacity: 0.4;
-  background-color: var(--color-secondary);
-} */
 
 main div.ehospitale-info {
   position: relative;
   height: 200px;
   display: flex;
   margin: 1.5em;
+  box-shadow: 0 2px 6px gray;
 }
 
 main div.ehospitale-info div.why-to {
@@ -120,7 +125,7 @@ main div.ehospitale-info div.why-to {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: var(--color-secondary);
+  background-color: white;
   transition: transform 0.3s;
 }
 
@@ -135,13 +140,13 @@ main div.ehospitale-info div.why-to:hover {
   transform: translateY(-10px);
 }
 
-@media (max-width: 620px) {
+@media (max-width: 690px) {
   .navigation {
     gap: 2em;
   }
 
   .navigation-bar {
-    gap: 1.5em;
+    gap: 1em;
     font-size: 14px;
   }
 }
@@ -202,11 +207,17 @@ main div.ehospitale-info div.why-to:hover {
   }
 }
 
+footer {
+  position: absolute;
+  width: 100%;
+  color: var(--footer-text-color);
+  background-color: var(--footer-color);
+}
+
 .footer-div {
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  background-color: var(--color-secondary);
 }
 
 .footer-div-inside {
@@ -236,12 +247,13 @@ main div.ehospitale-info div.why-to:hover {
 
 .footer-div-inside .footer-item li a {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--footer-text-color);
 }
 
 .social-div .location h3 {
   font-size: 17px;
   margin-bottom: 0;
+  box-shadow: none;
 }
 
 .social-div .location p {
@@ -312,7 +324,7 @@ main div.ehospitale-info div.why-to:hover {
   height: 200px;
   padding: 0;
   border-radius: 1em;
-  background-color: white;
+  background-color: var(--bg-color);
   box-shadow: 0 3px 3px 3px lightgray;
   border: none;
 }

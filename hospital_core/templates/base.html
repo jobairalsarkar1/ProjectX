@@ -17,7 +17,7 @@
 <body>
     <header class="header">
         <div class="navigation-wraper">
-            <div class="logo"><img src="" alt="EHospitale" class="e-hospitale"></div>
+            <div class="logo"><a href="{% url 'Home' %}" style="text-decoration: none;"><img src="" alt="EHospitale" class="e-hospitale"></a></div>
             <div class="hamburger-menu-icon">
                 <span class="material-symbols-outlined">
                     menu
@@ -26,10 +26,10 @@
             <div class="navigation" data-visible="false">
                 <nav>
                     <ul class="navigation-bar">
-                        <li class="navigation-item"><a href="/templates/blog.html" class="navigation-option">Blog</a>
+                        <li class="navigation-item"><a href="{% url 'Blog' %}" class="navigation-option">Blog</a>
                         </li>
-                        <li class="navigation-item"><a href="#" class="navgation-option">Services</a></li>
-                        <li class="navigation-item"><a href="#" class="navgation-option">About</a></li>
+                        <li class="navigation-item"><a href="{% url 'Service' %}" class="navgation-option">Services</a></li>
+                        <li class="navigation-item"><a href="{% url 'About' %}" class="navgation-option">About</a></li>
                     </ul>
                 </nav>
                 <button class="login-btn all-btn login-btn-popup">Sign In</button>
