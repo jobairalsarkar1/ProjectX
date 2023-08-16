@@ -1,6 +1,7 @@
 from django.db import models
 from doctors.models import Doctor
 from patients.models import Patient
+from django.utils import timezone
 
 class LabTest(models.Model):
     name = models.CharField(max_length=100)
@@ -11,4 +12,4 @@ class LabResult(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     result = models.TextField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now)

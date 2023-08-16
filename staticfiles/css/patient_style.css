@@ -1,0 +1,549 @@
+:root {
+  --header-height: 60px;
+  --bg-color: #fff6f0;
+  --text-color: #000000;
+  --color-white: #ffffff;
+  --color-primary: #06fe65;
+  --color-secondary: #ffdcc7;
+  --color-accent: #0068ff;
+  --color-ternary: #fdafbc;
+  --background-color: #f3f6ff;
+  --line-color: #908b8b;
+}
+
+/* Style for Main Body Part navigation is excluded. */
+.user-content-container {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: var(--background-color);
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  /* gap: 1.5em; */
+}
+
+.user-content-container::-webkit-scrollbar {
+  display: block;
+  width: 1em;
+}
+
+.user-content-container::-webkit-scrollbar-track {
+  background-color: rgb(255, 0, 0);
+}
+
+.user-content-container::-webkit-scrollbar-thumb {
+  height: 10%;
+  border-radius: 1em;
+  background-color: lightgray;
+}
+
+::-webkit-scrollbar {
+  display: block;
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-white);
+}
+
+::-webkit-scrollbar-thumb {
+  width: 0.5em;
+  height: 5%;
+  border-radius: 2em;
+  background-color: lightgray;
+}
+
+/* ::-webkit-scrollbar {
+    display: none;
+  } */
+
+.user-dashboard-content-container {
+  background-color: var(--background-color);
+  margin: 1.5em 1.5em 1.5em 0;
+  /* border: 1px solid black; */
+  height: (100vh - var(--header-height));
+}
+
+.user-content-container .user-dashboard-content-container:first-child {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.user-content-container .user-dashboard-content-container:last-child {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.user-dashboard-left-div {
+  width: 100%;
+}
+
+.user-dashboard-left-div:first-child {
+  height: 15%;
+  /* background-color: red; */
+  display: flex;
+  gap: 1.5em;
+}
+
+.apointment-options {
+  position: relative;
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
+  padding: 1em;
+  border-radius: 1em;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px 2px lightgray;
+  transition: all 0.2s;
+}
+
+.apointment-options:hover {
+  background: linear-gradient(
+    120deg,
+    #0068ff,
+    var(--color-accent),
+    var(--bg-color)
+  );
+  box-shadow: 0 0 10px 5px lightblue;
+  transform: translateY(-5px);
+}
+
+.plus-btn {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+}
+
+.apointment-options .make-appointment {
+  text-decoration: none;
+  /* font-size: 15px; */
+  color: var(--text-color);
+  font-weight: 550;
+  cursor: pointer;
+}
+
+.user-dashboard-left-div:nth-child(2) {
+  height: 40%;
+  border-radius: 1.5em;
+  box-shadow: 0 0 5px 3px lightgray;
+  background-color: var(--color-white);
+}
+
+.user-dashboard-left-div:last-child {
+  height: 45%;
+  background-color: violet;
+}
+
+.user-dashboard-right-div {
+  border: none;
+  background-color: transparent;
+}
+
+.user-dashboard-right-div:first-child {
+  width: 100%;
+  height: 45%;
+  border-radius: 1em;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px 3px lightgray;
+}
+
+.user-dashboard-right-div:last-child {
+  /* width: 100%; */
+  height: 55%;
+  padding: 1.5em;
+  overflow-y: scroll;
+  /* overflow-x: scroll; */
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px 3px lightgray;
+}
+
+/* Styling For the Calendar */
+.calendar {
+  background-color: var(--color-white);
+  /* width: 100%; */
+  /* height: 100%; */
+  padding: 2.2em 1em 1.5em 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1em;
+}
+
+.month-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.prev-next-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 2em;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.prev-next-btn:hover {
+  background-color: rgb(191, 191, 191);
+}
+
+.month-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 1em;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.day {
+  text-align: center;
+}
+
+.dates {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.date {
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+}
+
+.date:hover {
+  background-color: rgb(191, 191, 191);
+}
+
+.date.active {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.date.inactive {
+  color: #908b8b;
+}
+
+.date.inactive:hover {
+  color: #ffff;
+}
+
+/* Upcomming Appointment Container */
+.upcomming-appointment-container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.upcomming-appointment-list {
+  list-style-type: none;
+  position: relative;
+  padding: 1em;
+  border-radius: 1em;
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: white;
+  box-shadow: 0 0 5px 2px lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.5s;
+}
+
+/* .upcomming-appointment-link {
+    position: relative;
+    width: 100%;
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  } */
+
+.date-name {
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.appointment-time {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.upcomming-appointment-list:hover {
+  background-color: #0068ff;
+  color: var(--background-color);
+  box-shadow: 0 3px 5px lightgray;
+  transform: translateY(-5px);
+}
+
+/* BMI-Calculator */
+.bmi-container {
+  padding: 2em 1em;
+  display: flex;
+  gap: 1em;
+  border-radius: 1.5em;
+  background-color: var(--color-white);
+}
+
+.bmi-calculator {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.bmi-label {
+  font-size: 20px;
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+
+.bmi-input {
+  height: 40px;
+  border: none;
+  outline: none;
+  padding-left: 0.5em;
+  border-bottom: 2px solid var(--line-color);
+  background: transparent;
+}
+
+.bmi-btn {
+  height: 40px;
+  border: none;
+  outline: 2px solid var(--color-primary);
+  border-radius: 1em;
+  margin-top: 1em;
+  transition: all 0.3s;
+}
+
+.bmi-btn:hover {
+  box-shadow: 0 0 5px 2px rgb(69, 254, 69);
+  background-color: rgb(69, 254, 69);
+  transform: translateY(-5px);
+}
+
+.bmi-result {
+  width: 40%;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid var(--line-color);
+}
+
+.bmi-weight-result {
+  font-size: 30px;
+}
+
+.bmi-result-comment {
+  font-size: 18px;
+  font-weight: 550;
+}
+
+/* Patient Profile Page */
+.patient-content-container {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: var(--background-color);
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  /* box-shadow: 0 0 5px 2px lightgray; */
+  /* gap: 1.5em; */
+}
+
+.patient-profile-content-container {
+  background-color: var(--background-color);
+  /* border: 1px solid black; */
+  height: (100vh - var(--header-height));
+  margin: 1.5em 1.5em 0 0;
+}
+
+.patient-profile-content-container:first-child {
+  /* width: 100%; */
+  height: 50%;
+  display: flex;
+  gap: 1em;
+  /* background-color: var(--color-white); */
+}
+
+.patient-profile-content-container:last-child {
+  /* width: 100%; */
+  height: 50%;
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  overflow-y: scroll;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px 2px lightgray;
+}
+
+.patient-info {
+  position: relative;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px 3px lightgray;
+}
+
+.profile-edit-btn {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  font-weight: 550;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.5em 1em 0.5em 1em;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px 1px lightgray;
+  transition: all 0.3s;
+  cursor: pointer;
+  z-index: 600;
+}
+
+.profile-edit-btn:hover {
+  background-color: red;
+  color: var(--background-color);
+  transform: translateY(-3px);
+}
+
+.patient-profile-info {
+  padding: 1.5em;
+  text-align: center;
+  font-size: 16px;
+}
+
+.patient-profile-image {
+  position: relative;
+  width: 100%;
+  height: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5em;
+}
+
+.patient-profile-image::after {
+  position: absolute;
+  content: "";
+  top: 115%;
+  right: 1em;
+  left: 2em;
+  height: 3px;
+  background-color: rgb(183, 183, 183);
+}
+
+.patient-profile-actual-img {
+  width: 140px;
+  height: 150px;
+  border-radius: 4em;
+  background-color: green;
+}
+
+.something-extra {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.cancel-appointment {
+  border: none;
+  font-size: 15px;
+  font-weight: 550;
+  background-color: red;
+  color: var(--background-color);
+  padding: 0.8em 1.5em 0.8em 1.5em;
+  border-radius: 2em;
+  cursor: pointer;
+}
+
+.total-count-info {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px 3px lightgray;
+}
+
+.total-count-info h2 {
+  font-size: 2rem;
+}
+
+/* Patient Inbox */
+.patient-inbox-container {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  /* background-color: var(--background-color); */
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.patient-inbox {
+  /* height: 100%; */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  gap: 1.5em;
+  padding: 1em;
+  flex-direction: column;
+  margin: 1.5em 1.5em 1.5em 0;
+  box-shadow: 0 0 5px 3px lightgray;
+  background-color: var(--color-white);
+  height: calc(100vh - var(--header-height));
+}
+
+.patient-notification {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  background-color: var(--color-white);
+  cursor: pointer;
+  border-bottom: 1px solid rgb(161, 161, 161);
+}
+
+.notification-from-img {
+  width: 80px;
+  height: 90px;
+  border-radius: 1em;
+}
+
+@media (min-width: 900px) {
+  .patient-inbox-container {
+    width: 50%;
+    margin: auto;
+  }
+}

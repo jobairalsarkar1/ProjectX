@@ -3,8 +3,9 @@
   --text-color: #000000;
   --color-primary: #06fe65;
   --color-secondary: #ffdcc7;
-  --color-accent: #6001f9;
+  --color-accent: #0068FF;
   --color-ternary: #fdafbc;
+  --color-white: #FFFFFF;
 }
 
 .blog-container {
@@ -18,11 +19,11 @@
 .authentication-form {
   position: relative;
   width: 350px;
-  padding: 0 1.2em 1.2em 1.2em;
-  border-radius: 15px;
-  background-color: rgb(136, 137, 136);
-  /* background-color: var(--bg-color); */
   border: none;
+  border-radius: 15px;
+  padding: 0 1.2em 1.2em 1.2em;
+  background-color: var(--color-white);
+  box-shadow: 0 0 60px 10px rgb(89, 87, 87);
 }
 
 .authentication-form h2 {
@@ -45,8 +46,14 @@
   height: 45px;
   overflow: hidden;
   margin-bottom: 1em;
-  background-color: white;
   border-radius: 15px;
+  background-color: var(--color-white);
+  outline: 1px solid lightgray;
+}
+
+.authentication-form .user-info-input:hover {
+  background-color: rgb(232, 231, 231);
+  outline: 1px solid var(--color-accent);
 }
 
 .authentication-form .user-info-input input {

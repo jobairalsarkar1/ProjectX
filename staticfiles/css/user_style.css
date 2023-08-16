@@ -1,13 +1,14 @@
 :root {
   --header-height: 60px;
-  --color-white: #ffffff;
   --bg-color: #fff6f0;
   --text-color: #000000;
+  --color-white: #ffffff;
   --color-primary: #06fe65;
   --color-secondary: #ffdcc7;
-  --color-accent: #6001f9;
-  --footer-color: #01131e;
-  --footer-text-color: #dcf2fe;
+  --color-accent: #0068ff;
+  --color-ternary: #fdafbc;
+  --background-color: #f3f6ff;
+  --line-color: #908b8b;
 }
 
 * {
@@ -28,8 +29,8 @@ header {
   height: var(--header-height);
   display: flex;
   align-items: center;
-  color: var(--footer-text-color);
-  background-color: var(--color-accent);
+  color: var(--text-color);
+  background-color: var(--color-white);
   box-shadow: 0 0 5px 1px lightgray;
   z-index: 1000;
 }
@@ -67,14 +68,16 @@ header {
   height: 40px;
   display: flex;
   align-items: center;
+  color: var(--text-color);
 }
 
 .actual-search-bar {
   width: 100%;
   height: 100%;
-  border-radius: 1rem;
   border: 0;
   padding: 0.5em 1em;
+  border-radius: 1rem;
+  outline: 1px solid lightgray;
 }
 
 .actual-search-bar:hover {
@@ -140,7 +143,7 @@ header {
   height: 40px;
   border-radius: 0.5em;
   overflow: hidden;
-  background-color: var(--color-accent);
+  background-color: var(--color-white);
 }
 
 .user-toggle-navigation-list-item .user-toggle-navigation-link {
@@ -150,9 +153,10 @@ header {
   height: 100%;
   display: flex;
   align-items: center;
+  gap: 0.8em;
   padding: 0em 1em;
   font-weight: 600;
-  color: var(--color-white);
+  color: var(--text-color);
 }
 
 .user-toggle-navigation-list-item .user-toggle-navigation-link:hover {
@@ -164,11 +168,14 @@ header {
   width: 100%;
   text-align: start;
   height: 40px;
-  padding: 0.5em 1em;
+  padding: 0.5em 1.4em;
   border-radius: 1em;
   margin-bottom: 0.5em;
   border: none;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
 }
 
 .user-logout:hover {
@@ -179,19 +186,22 @@ header {
 .user-container {
   display: flex;
   gap: 1em;
+  background-color: var(--background-color);
 }
 
 .user-sidebar {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
   width: 80px;
   font-weight: 600;
   height: calc(100vh - var(--header-height));
   flex-shrink: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  background-color: var(--color-accent);
-  color: var(--color-white);
+  flex-direction: column;
+  color: var(--text-color);
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px 2px lightgray;
   transition: width 200ms ease-in-out;
 }
 
@@ -222,7 +232,7 @@ header {
   width: 100%;
   height: 100%;
   border-radius: 3em;
-  outline: 2px solid rgb(255, 255, 255);
+  outline: 2px solid var(--color-primary);
 }
 
 .user-sidebar.open .user-profile-photo-link {
@@ -251,10 +261,9 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1em 0 1em 0;
+  padding: 0.8em 0 0.8em 0;
   margin-bottom: 0.5em;
-  border-radius: 1em;
-  color: var(--color-white);
+  color: var(--text-color);
 }
 
 .user-middle-sidebar-list-item-link:hover {
@@ -311,14 +320,16 @@ header {
 }
 
 .user-bottom-logout {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .user-sidebar.open .user-bottom-logout {
-  text-align: center;
-  font-size: 15px;
   width: 90%;
+  font-size: 15px;
   margin-left: 0.8em;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 main {

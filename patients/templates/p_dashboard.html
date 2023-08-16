@@ -5,5 +5,122 @@
 
 {% block content %}
 <div class="user-content-container">
+    <div class="user-dashboard-content-container">
+        <div class="user-dashboard-left-div">
+            <div class="apointment-options">
+                <a href="#" class="make-appointment clinic-visit">
+                    <span class="material-symbols-outlined plus-btn">
+                        add_circle
+                    </span>
+                    <p class="appointment-type">Make an Online Appointment</p>
+                </a>
+            </div>
+            <div class="apointment-options">
+                <a href="#" class="make-appointment home-visit">
+                    <span class="material-symbols-outlined plus-btn">
+                        add_circle
+                    </span>
+                    <p class="appointment-type">Make an Clinic Appointment</p>
+                </a>
+            </div>
+        </div>
+        <div class="user-dashboard-left-div">
+            <div class="bmi-container">
+                <div class="bmi-calculator">
+                    <h3 class="bmi-label">BMI-Calculator</h3>
+                    <input type="text" placeholder="Weight (KG)" class="bmi-input bmi-weight-input">
+                    <input type="text" placeholder="Height (m)" class="bmi-input bmi-height-input">
+                    <button type="button" class="bmi-btn bmi-btn-js">Get Result</button>
+                </div>
+                <div class="bmi-result bmi-result-div">
+                    <h3 class="bmi-weight-js bmi-weight-result">57.0</h3>
+                    <p class="bmi-comment-js bmi-result-comment">Normal Weight</p>
+                </div>
+            </div>
+        </div>
+        <div class="user-dashboard-left-div"></div>
+    </div>
+    <div class="user-dashboard-content-container">
+        <div class="user-dashboard-right-div">
+            <div class="calendar">
+                <div class="month-btn">
+                    <button type="button" class="prev-next-btn prevBtn previous">
+                        <span class="material-symbols-outlined">
+                            arrow_back_ios
+                        </span>
+                    </button>
+                    <div class="monthYear month-name"></div>
+                    <button type="button" class="prev-next-btn nextBtn next">
+                        <span class="material-symbols-outlined">
+                            arrow_forward_ios
+                        </span>
+                    </button>
+                </div>
+                <div class="days">
+                    <div class="day">SUN</div>
+                    <div class="day">MON</div>
+                    <div class="day">TUE</div>
+                    <div class="day">WED</div>
+                    <div class="day">THU</div>
+                    <div class="day">FRI</div>
+                    <div class="day">SAT</div>
+                </div>
+
+                <div class="dates" id="dates"></div>
+            </div>
+        </div>
+        <div class="user-dashboard-right-div">
+            <ul class="upcomming-appointment-container">
+                <li class="upcomming-appointment-list">
+                    <!-- <a href="#" class="upcomming-appointment-link">
+                    </a> -->
+                    <div class="date-name">
+                        <p>10, July, 2023</p>
+                        <p>Dr. Ayesha Rahman</p>
+                    </div>
+                    <div class="appointment-time">
+                        12:00
+                        <p>PM</p>
+                    </div>
+                </li>
+                <li class="upcomming-appointment-list">
+                    <!-- <a href="#" class="upcomming-appointment-link">
+                    </a> -->
+                    <div class="date-name">
+                        <p>10, July, 2023</p>
+                        <p>Dr. Ayesha Rahman</p>
+                    </div>
+                    <div class="appointment-time">
+                        12:00
+                        <p>PM</p>
+                    </div>
+                </li>
+                <li class="upcomming-appointment-list">
+                    <!-- <a href="#" class="upcomming-appointment-link">
+                    </a> -->
+                    <div class="date-name">
+                        <p>10, July, 2023</p>
+                        <p>Dr. Ayesha Rahman</p>
+                    </div>
+                    <div class="appointment-time">
+                        12:00
+                        <p>PM</p>
+                    </div>
+                </li>
+                <li class="upcomming-appointment-list">
+                    <!-- <a href="#" class="upcomming-appointment-link">
+                    </a> -->
+                    <div class="date-name">
+                        <p>10, July, 2023</p>
+                        <p>Dr. Ayesha Rahman</p>
+                    </div>
+                    <div class="appointment-time">
+                        12:00
+                        <p>PM</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 {% endblock %}

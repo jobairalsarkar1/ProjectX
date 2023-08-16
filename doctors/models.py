@@ -9,6 +9,8 @@ class Doctor(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     specialty = models.CharField(max_length=300)
 
+    def __str__(self) -> str:
+        return f"Doctor->{self.fname} {self.lname}"
 class Assignment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.Case)
