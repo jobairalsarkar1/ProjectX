@@ -6,3 +6,4 @@ class Department(models.Model):
 class Room(models.Model):
     number = models.CharField(max_length=20)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    
