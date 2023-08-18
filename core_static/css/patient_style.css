@@ -353,6 +353,7 @@
   text-align: center;
   flex-direction: column;
   justify-content: center;
+  border-radius: 2em;
   border: 2px solid var(--line-color);
 }
 

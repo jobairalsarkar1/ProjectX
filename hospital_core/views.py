@@ -43,10 +43,6 @@ def PatientRegister(request):
     return render(request, 'register.html', {'form': form})
 
 
-# def doctor_login_view(request):
-#     return render(request, 'doctor_login.html')
-
-
 def doctor_login_view(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -59,7 +55,6 @@ def doctor_login_view(request):
             return render(request, 'doctor_login.html', {'error_message': error_message})
 
         if check_password(password, doctor.password):
-            # Password matches, log the doctor in
             request.session['doctor_id'] = doctor.id
             return redirect('doctors_dashboard')
         else:
@@ -67,18 +62,6 @@ def doctor_login_view(request):
             return render(request, 'doctor_login.html', {'error_message': error_message})
 
     return render(request, 'doctor_login.html')
-
-
-# def doctor_dashboard_view(request):
-#     doctor_id = request.session.get('doctor_id')
-#     if doctor_id:
-#         try:
-#             doctor = Doctor.objects.get(id=doctor_id)
-#             return render(request, 'd_dashboard.html', {'doctor': doctor})
-#         except Doctor.DoesNotExist:
-#             pass
-
-#     return redirect('doctor_login')
 
 
 def patient_login_view(request):
