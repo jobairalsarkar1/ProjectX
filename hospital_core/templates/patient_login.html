@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Sign In</title>
+{% endblock %}
+
+{% block content %}
+<div class="patient-auth-container">
+    <!-- <dialog class="login-form-patient-modal authentication-form"> -->
+    <div class="authentication-form">
+        <form method="POST">
+            <!-- <button type="button" class="close login-form-close-btn"> <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button> -->
+            {% csrf_token %}
+            <h2>Login</h2>
+            <div class="user-info-input">
+                <input type="email" name="email" placeholder="Email or Phone Number" required>
+            </div>
+            <div class="user-info-input">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="user-info-checkbox">
+                <input type="checkbox">
+                <span>Remember Me.</span>
+            </div>
+            <button type="submit" class="sign-in-btn all-btn">Login</button>
+            <div class="user-info-links">
+                <p>Don't have an account? <a href="{% url 'Register' %}">Create One.</a></p>
+                <a href="#">Forgot Password</a>
+            </div>
+        </form>
+        {% if error_message %}
+        <p>{{ error_message }}</p>
+        {% endif %}
+    </div>
+    <!-- </dialog> -->
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Register</title>
+{% endblock %}
+
+{% block content %}
+<div class="patient-auth-container">
+    <!-- <dialog class="sign-up-form-modal authentication-form"> -->
+    <div class="authentication-form">
+        <form method="POST">
+            <!-- <button type="button" class="close sign-up-form-close-btn"> <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button> -->
+            {% csrf_token %}
+            <h2>Sign Up</h2>
+            <div class="user-info-input">
+                <!-- <input type="text" placeholder="First Name" required> -->
+                {{form.first_name}}
+            </div>
+            <div class="user-info-input">
+                <!-- <input type="text" placeholder="Last Name" required> -->
+                {{form.last_name}}
+
+            </div>
+            <div class="user-info-input">
+                <!-- <input type="email" placeholder="Email or Phone Number" required> -->
+                {{form.email}}
+            </div>
+            <div class="user-info-input">
+                <!-- <input type="password" placeholder="Password" required> -->
+                {{form.password}}        
+            </div>
+            <div class="user-info-input">
+                <!-- <input type="password" placeholder="Re-type Password" required> -->
+                {{form.retype_password}}
+            </div>
+            <div class="user-info-checkbox">
+                <input type="checkbox">
+                <span>Remember Me.</span>
+            </div>
+            <button class="sign-in-btn all-btn">Sign Up</button>
+            <div class="user-info-links">
+                <p>Already have an account? <a href="#">Sign In.</a></p>
+                <p><a href="#">Forgot Password</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

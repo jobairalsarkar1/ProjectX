@@ -1,10 +1,16 @@
 :root {
+  --header-height: 60px;
+  --header-color: #06fe65;
+  --header-height: 60px;
+  --color-white: #ffffff;
   --bg-color: #fff6f0;
   --text-color: #000000;
   --color-primary: #06fe65;
   --color-secondary: #ffdcc7;
-  --color-accent: #6001f9;
-  --color-ternary: #fdafbc;
+  --color-accent: #0068ff;
+  --footer-color: #01131e;
+  --footer-text-color: #dcf2fe;
+  --background-color: #f3f6ff;
 }
 
 .blog-container {
@@ -18,11 +24,11 @@
 .authentication-form {
   position: relative;
   width: 350px;
-  padding: 0 1.2em 1.2em 1.2em;
   border-radius: 15px;
-  background-color: rgb(136, 137, 136);
-  /* background-color: var(--bg-color); */
+  padding: 1em 1.2em 1.2em 1.2em;
   border: none;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px 3px lightgray;
 }
 
 .authentication-form h2 {
@@ -45,8 +51,26 @@
   height: 45px;
   overflow: hidden;
   margin-bottom: 1em;
-  background-color: white;
   border-radius: 15px;
+  background-color: white;
+  outline: 1px solid lightgray;
+}
+
+.authentication-form .user-info-input:hover {
+  background-color: rgb(232, 231, 231);
+  outline: 1px solid var(--color-accent);
+}
+
+.user-info-input select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 0.5em 0 1em;
+  background-color: transparent;
 }
 
 .authentication-form .user-info-input input {

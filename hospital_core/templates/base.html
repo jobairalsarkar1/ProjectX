@@ -8,7 +8,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
-    <!-- <link rel="stylesheet" href="{% static '/css/mystyle.css' %}"> -->
+    <link rel="stylesheet" href="{% static '/css/mystyle.css' %}">
     <link rel="stylesheet" href="{% static '/css/secondaryStyle.css' %}">
     <title>EHospitale</title>
     {% block title %} {% endblock %}
@@ -17,7 +17,8 @@
 <body>
     <header class="header">
         <div class="navigation-wraper">
-            <div class="logo"><a href="{% url 'Home' %}" style="text-decoration: none;"><img src="" alt="EHospitale" class="e-hospitale"></a></div>
+            <div class="logo"><a href="{% url 'Home' %}" style="text-decoration: none;"><img src="" alt="EHospitale"
+                        class="e-hospitale"></a></div>
             <div class="hamburger-menu-icon">
                 <span class="material-symbols-outlined">
                     menu
@@ -28,7 +29,8 @@
                     <ul class="navigation-bar">
                         <li class="navigation-item"><a href="{% url 'Blog' %}" class="navigation-option">Blog</a>
                         </li>
-                        <li class="navigation-item"><a href="{% url 'Service' %}" class="navgation-option">Services</a></li>
+                        <li class="navigation-item"><a href="{% url 'Service' %}" class="navgation-option">Services</a>
+                        </li>
                         <li class="navigation-item"><a href="{% url 'About' %}" class="navgation-option">About</a></li>
                     </ul>
                 </nav>
@@ -36,7 +38,7 @@
             </div>
         </div>
     </header>
-    
+
     <!-- This one is the dialog which contains two buttons 'Doctor' & 'Patient' -->
     <dialog class="login-as login-as-status-btn login-options-for-user">
         <div class="login-as-box">
@@ -47,8 +49,10 @@
             </button>
             <h3 class="status">I want to Log In as-</h3>
             <div class="login-as-options">
-                <button type="button" class="login-as-btn login-as-patient">Patient</button>
-                <button type="button" class="login-as-btn login-as-doctor">Doctor</button>
+                <a href="{% url 'PatientLogin' %}"><button type="button"
+                        class="login-as-btn login-as-patient">Patient</button></a>
+                <a href="{% url 'DoctorLogin' %}"><button type="button"
+                        class="login-as-btn login-as-doctor">Doctor</button></a>
             </div>
         </div>
     </dialog>
