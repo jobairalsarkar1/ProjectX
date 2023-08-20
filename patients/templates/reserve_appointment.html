@@ -1,0 +1,45 @@
+{% extends 'p_base.html' %}
+{% block title %}
+<title>Settings</title>
+{% endblock %}
+
+{% block content %}
+<style>
+    li {
+        list-style-type: none;
+    }
+</style>
+<div class="patient-appointment-container">
+    <div class="reserve-appointment-block">
+        <h2 class="appointment-title">Reserve Appointment with: Dr. John Pie</h2>
+        <form method="post" class="appointment-form">
+            {% csrf_token %}
+            {{ form.date }}
+            {% if form.date.errors %}
+            <div class="error-message" style="color: red;font-size: 15px;margin-top: -15px;font-weight: 550;">
+                {{ form.date.errors }}
+            </div>
+            {% endif %}
+
+            {{ form.time}}
+            {% if form.time.errors %}
+            <div class="error-message" style="color: red;font-size: 14px;margin-top: -15px;font-weight: 550;">
+                {{ form.time.errors }}
+            </div>
+            {% endif %}
+            <!-- <input type="date" class="appointment-datetime"> -->
+            <!-- <input type="time" class="appointment-datetime"> -->
+            <button type="submit" class="appointment-reserve-btn">Reserve</button>
+        </form>
+    </div>
+</div>
+<!-- <h2>Reserve Appointment with {{ doctor.fname }} {{ doctor.lname }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.date.label_tag }} {{ form.date }}
+    {{ form.time.label_tag }} {{ form.time }}
+    <button type="submit">Reserve</button>
+</form> -->
+
+
+{% endblock %}

@@ -32,7 +32,8 @@
             <!-- <div class="user-profile"> -->
             <div class="user-toggle-navigation">
                 <button class="user-toggle-navigation-btn user-toggle-btn-display">
-                    <img src="/static/icon/profile.jpg" alt="Profile" class="profile-toggle-img">
+                    <!-- <img src="/static/icon/profile.jpg" alt="Profile" class="profile-toggle-img"> -->
+                    <img src="{{ doctor.profile_picture.url }}" alt="Profile" class="profile-toggle-img">
                     <!-- <div class="user-name"> -->
                     <p>@JAS</p>
                     <span class="material-symbols-outlined">
@@ -42,17 +43,32 @@
                 </button>
                 <div class="user-navigation-list-part user-list-block-display" data-visible="false">
                     <ul class="user-toggle-navigation-list">
-                        <li class="user-toggle-navigation-list-item"><a href="{% url 'doctors_profile' %}"
-                                class="user-toggle-navigation-link">Profile</a>
+                        <li class="user-toggle-navigation-list-item">
+                            <a href="{% url 'doctors_profile' %}" class="user-toggle-navigation-link">
+                                <span class="material-symbols-outlined user-sidebar-icon">
+                                    person
+                                </span>
+                                Profile
+                            </a>
                         </li>
-                        <li class="user-toggle-navigation-list-item"><a href="#"
-                                class="user-toggle-navigation-link">Report</a>
+                        <li class="user-toggle-navigation-list-item">
+                            <a href="{% url 'doctors_inbox' %}" class="user-toggle-navigation-link">
+                                <span class="material-symbols-outlined user-sidebar-icon">
+                                    mail
+                                </span>
+                                Inbox
+                            </a>
                         </li>
-                        <li class="user-toggle-navigation-list-item"><a href="{% url 'doctors_inbox' %}"
-                                class="user-toggle-navigation-link">Inbox</a>
+                        <li class="user-toggle-navigation-list-item">
+                            <a href="#" class="user-toggle-navigation-link">
+                                <span class="material-symbols-outlined">
+                                    report
+                                </span>
+                                Report
+                            </a>
                         </li>
                     </ul>
-                    <button type="button" class="user-logout">Log Out</button>
+                    <a href="{% url 'doctor_logout' %}"><button type="submit" class="user-logout">Log Out</button></a>
                 </div>
             </div>
             <!-- </div> -->
@@ -62,9 +78,11 @@
         <aside class="user-sidebar open" data-sidebar>
             <div class="user-top-sidebar">
                 <a href="#" class="user-profile-photo-link">
-                    <img src="/static/icon/profile.jpg" alt="Profile" class="user-sidebar-profile-img">
+                    <img src="{{ doctor.profile_picture.url }}" alt="Profile" class="user-sidebar-profile-img">
+                    <!-- <img src="/static/icon/profile.jpg" alt="Profile" class="user-sidebar-profile-img"> -->
                 </a>
-                <div class="user-name">Jobair Al Sarkar</div>
+                <!-- <div class="user-name">Jobair Al Sarkar</div> -->
+                <div class="user-name">{{doctor.fname}} {{doctor.lname}}</div>
             </div>
             <div class="user-middle-sidebar">
                 <ul class="user-middle-sidebar-list">
@@ -115,7 +133,8 @@
                     <li class="user-bottom-sidebar-item"><a href="#" class="user-bottom-sidebar-item"></a></li>
                     <li class="user-bottom-sidebar-item"><a href="#" class="user-bottom-sidebar-item"></a></li>
                 </ul>
-                <button type="button" class="user-logout user-bottom-logout">Log Out</button>
+                <a href="{% url 'doctor_logout' %}"><button type="button" class="user-logout user-bottom-logout">Log
+                        Out</button></a>
             </div>
         </aside>
         <main>

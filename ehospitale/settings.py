@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'doctors.middleware.RestrictDoctorAccessMiddleware',
+    'patients.middleware.RestrictPatientAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'ehospitale.urls'
@@ -86,7 +89,7 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
-        'OPTIONS': {'sql_mode':'STRICT_ALL_TABLES',},
+        'OPTIONS': {'sql_mode': 'STRICT_ALL_TABLES', },
     }
 }
 
@@ -130,6 +133,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'staticfiles'
 ]
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

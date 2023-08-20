@@ -6,5 +6,23 @@
 {% block content %}
 <div class="user-content-container">
     <h1>Settings</h1>
+    <ul class="upcomming-appointment-container">
+        {% for appointment in appointments %}
+            <li class="upcomming-appointment-list">
+                <div class="date-name">
+                    <p>{{ appointment.date|date:"d, F, Y" }}</p>
+                    <p>{{ appointment.doctor.fname }} {{ appointment.doctor.lname }}</p>
+                </div>
+                <div class="appointment-time">
+                    {{ appointment.date|time:"h:i" }}
+                    <p>{{ appointment.date|time:"A" }}</p>
+                </div>
+                <div class="manage-btn">
+                    <button type="button" class="cancel-appointment">Cancel</button>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    
 </div>
 {% endblock %}

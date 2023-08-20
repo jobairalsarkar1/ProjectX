@@ -6,5 +6,11 @@
 {% block content %}
 <div class="user-content-container">
     Dashboard
+    {% if doctor.is_authenticated %}
+    <h1>{{doctor.email}}</h1>
+    <h1>{{doctor.fname}} {{doctor.lname}}</h1>
+    {% else %}
+    <h1>Your are not Logged In</h1>
+    {% endif %}
 </div>
 {% endblock %}
