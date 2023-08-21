@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import check_password
-from .models import Doctor
+from .models import Doctor, DoctorNotification
 from patients.models import Patient, Appointment
 from hospital_core.models import Department
 from .decorators import doctor_required
@@ -68,4 +68,62 @@ def doctor_settings(request):
 
 def doctor_logout(request):
     logout(request)
+    return redirect('DoctorLogin')
+
+def doctor_patients_list(request):
+    doctor_id = request.session.get('doctor_id')
+    if doctor_id:
+        try:
+            doctor = Doctor.objects.get(id=doctor_id)
+            patients = Patient.objects.filter(appointment__doctor = doctor).distinct()
+            return render(request, 'doctor_patients_list.html', {'doctor':doctor, 'patients':patients})
+        except Doctor.DoesNotExist:
+            pass
+    return redirect('DoctorLogin')
+
+# def send_notification(request, patient_id):
+#     if request.method == 'POST':
+#         subject = request.POST['subject']
+#         message = request.POST['message']
+#         sender = Doctor.objects.get(id=request.session['doctor_id'])
+#         receiver = Patient.objects.get(id=patient_id)
+
+#         attachment = None
+#         if request.FILES.get('attachment'):
+#             attachment = request.FILES['attachment']
+
+#         notification = DoctorNotification(sender=sender, receiver=receiver, subject=subject, message=message, attachment=attachment)
+#         notification.save()
+#         return redirect('doctor_patients_list')
+#     else:
+#         try:
+#             patient = Patient.objects.get(id=patient_id)
+#             return render(request, 'send_notification.html', {'patient':patient})
+#         except Patient.DoesNotExist:
+#             pass
+#     return redirect('DoctorLogin')
+
+
+def send_notification(request, patient_id):
+    doctor_id = request.session.get('doctor_id')
+    if request.method == 'POST':
+        subject = request.POST['subject']
+        message = request.POST['message']
+        sender = Doctor.objects.get(id=request.session['doctor_id'])
+        recipient = Patient.objects.get(id=patient_id)
+
+        attachment = None
+        if request.FILES.get('attachment'):
+            attachment = request.FILES['attachment']
+
+        notification = DoctorNotification(sender=sender, recipient=recipient, subject=subject, message=message, attachment=attachment)
+        notification.save()
+        return redirect('doctor_patients_list')
+    else:
+        try:
+            patient = Patient.objects.get(id=patient_id)
+            doctor = Doctor.objects.get(id=doctor_id)
+            return render(request, 'send_notification.html', {'patient': patient, 'doctor':doctor})
+        except Patient.DoesNotExist:
+            pass
     return redirect('DoctorLogin')

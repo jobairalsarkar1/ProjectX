@@ -43,8 +43,8 @@
             {% for appointment in appointments_done %}
             <li class="upcomming-appointment-list">
                 <div class="date-name">
-                    <p>{{ appointment.date|date:"d, F, Y" }}</p>
-                    <p>{{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</p>
+                    <p>Date: {{ appointment.date|date:"d, F, Y" }}</p>
+                    <p>Patient: {{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</p>
                 </div>
                 <div class="appointment-time">
                     {{ appointment.date|time:"h:i" }}

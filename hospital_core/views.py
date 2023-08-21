@@ -82,3 +82,42 @@ def patient_login_view(request):
             return render(request, 'patient_login.html', {'error_message': error_message})
 
     return render(request, 'patient_login.html')
+
+
+def no_access(request):
+    return render(request, '404.html')
+
+
+def compose_notification(request, receiver_type, receiver_id):
+    if request.method == 'POST':
+        message = request.POST.get('message')
+        sender_id = request.session.get(
+            'patient_id') or request.session.get('doctor_id')
+
+        if sender_id:
+            sender_type = 'patient' if request.session.get(
+                'patient_id') else 'doctor'
+            sent_by_patient = sender_type == 'patient'
+
+            if receiver_type == 'doctor':
+                receiver_model = Doctor
+            else:
+                receiver_model = Patient
+
+            # receiver = receiver_model.objects.get(id=receiver_id)
+            Notification.objects.create(
+                sender_id=sender_id, receiver_id=receiver_id, sent_by_patient=sent_by_patient, message=message)
+            return redirect('Blog')
+    return render(request, 'compose_notification.html', {'receiver_type': receiver_type, 'receiver_id': receiver_id})
+    doctor_id = request.session.get('doctor_id')
+    if doctor_id:
+        try:
+            doctor = Doctor.objects.get(id=doctor_id)
+            notifications = Notification.objects.filter(
+                receiver_id=doctor_id, sent_by_patient=True)
+            return render(request, 'd_inbox.html', {'doctor': doctor, 'notifications': notifications})
+        except Doctor.DoesNotExist:
+            pass
+    return redirect('DoctorLogin')
+
+

@@ -24,13 +24,6 @@ class PatientRegistrationForm(forms.ModelForm):
         }
 
 
-class PatientUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Patient
-        fields = ['first_name', 'last_name',
-                  'phone', 'birth_date', 'profile_picture']
-
-
 class AppointMentForm(forms.ModelForm):
     class Meta:
         model = Appointment
@@ -49,16 +42,22 @@ class AppointMentForm(forms.ModelForm):
 
             local_time = timezone.now().replace(tzinfo=None)
             if datetime_combined <= local_time:
-                self.add_error('date', 'As it is not possible to go back in time choose date from the future.')
+                self.add_error(
+                    'date', 'As it is not possible to go back in time choose date from the future.')
             existing_appointment = Appointment.objects.filter(
                 date=datetime_combined).first()
             if existing_appointment:
                 self.add_error('date', 'This Date & Time is already Reserved.')
-                # raise ValidationError('This Date & Time is already reserved.')
 
             # Checks if time is between 9 AM to 4 PM
             if time.hour < 9 or time.hour >= 16:
-                self.add_error('time', 'Appointments are only allowed between 9 AM and 4 PM.')
-                # raise ValidationError('Appointments are only allowed between 9 AM and 4 PM.')
+                self.add_error(
+                    'time', 'Appointments are only allowed between 9 AM and 4 PM.')
 
         return cleaned_data
+
+
+# class NotificationForm(forms.ModelForm):
+#     class Meta:
+#         model = Notification
+#         fields = ['subject', 'message', 'file']

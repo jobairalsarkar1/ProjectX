@@ -14,7 +14,8 @@ class Patient(models.Model):
     phone = models.CharField(max_length=15, blank=True, null=True)
     password = models.CharField(max_length=200)
     birth_date = models.DateField(default=timezone.now)
-    profile_picture = models.ImageField(upload_to='patients_profile_picture', default='patient.jpg')
+    profile_picture = models.ImageField(
+        upload_to='patients_profile_picture', default='patient.jpg')
 
     def save(self, *args, **kwargs):
         if not self.password.startswith('pbkdf2_sha256$'):
@@ -54,5 +55,9 @@ class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     date = models.DateTimeField(unique=True)
 
+    def __str__(self) -> str:
+        return f"Appointment NO -> {self.id}"
+
     class Meta:
         unique_together = ('doctor', 'date')
+

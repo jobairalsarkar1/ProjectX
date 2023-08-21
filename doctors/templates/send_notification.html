@@ -1,0 +1,68 @@
+{% extends 'd_base.html' %}
+{% block title %}
+<title>My Patients</title>
+{% endblock %}
+
+{% block content %}
+<div class="doctor-inbox-container">
+    <div class="doctor-inbox">
+        <div class="notification-form-div">
+            <div class="notification-to">
+                <h3>Send Notification To <span>{{ patient.first_name }} {{ patient.last_name }}</span></h3>
+            </div>
+            <form method="post" action="{% url 'send_notification' patient.id %}" enctype="multipart/form-data"
+                class="notification-form">
+                {% csrf_token %}
+                <div class="notification-form-item">
+                    <label for="subject">Subject:</label>
+                    <input type="text" name="subject" required class="subject">
+                </div>
+                <div class="notification-form-item">
+                    <label for="message">Message:</label>
+                    <textarea name="message" required></textarea>
+                </div>
+                <div class="notification-form-item">
+                    <label for="attachment">Report</label>
+                    <div class="report-file">
+                        <p>
+                            <span class="material-symbols-outlined">
+                                add
+                            </span>
+                            <span class="file-name">
+                                Select Report
+                            </span>
+                        </p>
+                        <input type="file" name="attachment" class="file" onchange="updateFileName(this)">
+                    </div>
+                </div>
+                <button type="submit" class="notification-btn">Send Notification</button>
+            </form>
+        </div>
+        <!--         <h1>Send Notification To {{ patient.first_name }} {{ patient.last_name }}</h1>
+
+        <form method="post" action="{% url 'send_notification' patient.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="subject">Subject:</label>
+            <input type="text" name="subject" required><br>
+            <label for="message">Message:</label><br>
+            <textarea name="message" required></textarea><br>
+            <label for="attachment">Attachment:</label>
+            <input type="file" name="attachment"><br>
+            <button type="submit">Send Notification</button>
+        </form> -->
+    </div>
+</div>
+<script>
+    function updateFileName(input) {
+        const fileNameSpan = input.parentNode.querySelector('.file-name');
+        if (input.files.length > 0) {
+            fileNameSpan.textContent = input.files[0].name;
+            fileNameSpan.style.fontSize = '12px';
+            fileNameSpan.style.color = 'black';
+        } else {
+            fileNameSpan.textContent = 'Select Report';
+        }
+    }
+
+</script>
+{% endblock %}

@@ -6,7 +6,31 @@
 {% block content %}
 <div class="patient-inbox-container">
     <div class="patient-inbox">
+        <ul>
+            {% for notification in notifications %}
+            <li>
+                <strong>{{ notification.sender.fname }} {{ notification.sender.lname }}</strong><br>
+                Subject: {{ notification.subject }}<br>
+                {{ notification.message }}<br>
+                {% if notification.attachment %}
+                Attachment: <a href="{{ notification.attachment.url }}">Download</a><br>
+                {% endif %}
+                Sent at: {{ notification.timestamp }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% for notification in notifications %}
         <div class="patient-notification">
+            <img src="{{ notification.sender.profile_picture.url }}" alt="Sender.." class="notification-from-img">
+            <div class="main-notification">
+                <h3>{{ notification.subject }}</h3>
+                <p>{{ notification.message }}</p>
+                <small>From: {{ notification.sender.fname }} {{ notification.sender.lname }}</small><br>
+                <small>{{ notification.timestamp}}</small>
+            </div>
+        </div>
+        {% endfor %}
+<!--         <div class="patient-notification">
             <img src="/static/icon/profile.jpg" alt="Sender.." class="notification-from-img">
             <div class="main-notification">
                 <h3>Your Prescription</h3>
@@ -40,14 +64,7 @@
                 <h3>Your Prescription</h3>
                 <p>Here is you Prescription. It contains Blah Blah Blah</p>
             </div>
-        </div>
-        <div class="patient-notification">
-            <img src="/static/icon/profile.jpg" alt="Sender.." class="notification-from-img">
-            <div class="main-notification">
-                <h3>Your Prescription</h3>
-                <p>Here is you Prescription. It contains Blah Blah Blah</p>
-            </div>
-        </div>
+        </div> -->
     </div>
 </div>
 {% endblock %}

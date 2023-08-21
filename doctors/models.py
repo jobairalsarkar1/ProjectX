@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from hospital_core.models import Department, Room
 from django.contrib.auth.hashers import make_password
 # from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
@@ -44,6 +45,19 @@ class Doctor(models.Model):
             self.profile_picture = InMemoryUploadedFile(
                 bytes_memory, 'ImageField', self.profile_picture.name, f'image/{format_extention.lower()}', bytes_memory.tell(), None)
             super().save(*args, **kwargs)
+
+
+class DoctorNotification(models.Model):
+    sender = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    recipient = models.ForeignKey('patients.Patient', on_delete=models.CASCADE)
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    attachment = models.FileField(
+        upload_to='notification_attachments', blank=True, null=True)
+    timestamp = models.DateTimeField(default=timezone.now)
+
+    def __str__(self) -> str:
+        return f'Notification -> {self.id}'
 
 
 class Assignment(models.Model):

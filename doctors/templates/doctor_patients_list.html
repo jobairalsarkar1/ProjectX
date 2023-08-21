@@ -1,0 +1,19 @@
+{% extends 'd_base.html' %}
+{% block title %}
+<title>My Patients</title>
+{% endblock %}
+
+{% block content %}
+<div class="doctor-inbox-container">
+    <div class="doctor-inbox">
+        <h1>Welcome, Dr. {{ doctor.fname }} {{ doctor.lname }}!</h1>
+  
+        <h2>Your Patients:</h2>
+        <ul>
+          {% for patient in patients %}
+            <li><a href="{% url 'send_notification' patient.id %}">{{ patient.first_name }} {{ patient.last_name }}</a></li>
+          {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

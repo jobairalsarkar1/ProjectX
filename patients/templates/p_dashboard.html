@@ -75,7 +75,7 @@
                 <li class="upcomming-appointment-list">
                     <div class="date-name">
                         <p>{{ appointment.date|date:"d, F, Y" }}</p>
-                        <p>{{ appointment.doctor.fname }} {{ appointment.doctor.lname }}</p>
+                        <p>Dr. {{ appointment.doctor.fname }} {{ appointment.doctor.lname }}</p>
                     </div>
                     <div class="appointment-time">
                         {{ appointment.date|time:"h:i" }}

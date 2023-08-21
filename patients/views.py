@@ -4,8 +4,9 @@ from django.contrib.auth import logout
 # from django.contrib.auth.decorators import login_required
 # from .decorators import patient_required
 from .models import Patient, Appointment
-from doctors.models import Doctor
+from doctors.models import Doctor, DoctorNotification
 from .forms import AppointMentForm
+from datetime import datetime
 
 
 # @patient_required
@@ -43,7 +44,8 @@ def patients_inbox(request):
     if patient_id:
         try:
             patient = Patient.objects.get(id=patient_id)
-            return render(request, 'p_inbox.html', {'patient': patient})
+            notifications = DoctorNotification.objects.filter(recipient = patient).order_by('-timestamp')
+            return render(request, 'p_inbox.html', {'patient': patient, 'notifications':notifications})
         except Patient.DoesNotExist:
             pass
 
@@ -104,6 +106,8 @@ def reserve_appointment(request, doctor_id):
         if form.is_valid():
             appointment = form.save(commit=False)
             appointment.doctor = doctor
+            datetime_combined = datetime.combine(appointment.date, form.cleaned_data['time'])
+            appointment.date = datetime_combined
             try:
                 patient = Patient.objects.get(id=patient_id)
                 appointment.patient = patient
@@ -128,12 +132,10 @@ def cancel_appointment(request, appointment_id):
     except Appointment.DoesNotExist:
         pass
 
-    # return redirect('upcoming_appointments')
     return redirect('patients_account')
 
+
 # Necessary Third party function.
-
-
 def get_patients_total_appointment(patient_id):
     try:
         patient = Patient.objects.get(id=patient_id)
