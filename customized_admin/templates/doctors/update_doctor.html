@@ -1,0 +1,13 @@
+{% extends 'base/baseadmin.html' %}
+
+{%block title%}Update Doctor{%endblock title%}
+
+{% block main-content %}
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form}}
+        <button class="btn btn-warning btn-md my-2" type="submit">Update</button>
+    </form>
+</div>
+{% endblock main-content %}

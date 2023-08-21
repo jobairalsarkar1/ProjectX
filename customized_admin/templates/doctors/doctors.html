@@ -1,0 +1,57 @@
+{%extends 'base/baseadmin.html' %}
+
+{%block title%}Doctors{%endblock title%}
+
+{% block main-content %}
+<div class="container-fluid">
+    <div class="utility d-flex justify-content-between align-items-center">
+        <div class="search d-flex">
+            <form method="post" action="{% url 'search_doctor' %}" class="d-flex align-items-center">
+                {% csrf_token %}
+                <input type="text" name="value" id="" placeholder="Search">
+                <button type="submit" class="btn btn-sm btn-success mx-1"><i class="fa fa-search"></i></button>
+            </form>
+            <form action="{% url 'filter_doctor'%}" method="post" class="mx-4 d-flex align-items-center">
+                {%csrf_token%}
+                <select id="selectField" name="options" style="height: 2rem;">
+                    <option value="" selected disabled>Filter By Department</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                </select>
+
+                <button type="submit" class="btn btn-sm btn-primary mx-1"><i class="fa fa-filter"></i></button>
+            </form>
+        </div>
+        <a href="{%url 'add_doctor' %}" class="btn btn-success btn-md my-2">Add<i class="fa fa-plus ml-1"></i></a>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Count</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Modify</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for doctor in doctors%}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{doctor}}</td>
+                <td>{{doctor.email}}</td>
+                <td>{{doctor.department}}</td>
+                <td>
+                    <a href="{% url 'update_doctor' doctor.id%}" class="btn btn-warning btn-sm mx-2"> <i
+                            class="fa fa-edit"></i> </a>
+                    <a href="{% url 'delete_doctor' doctor.id %}" class="btn btn-danger btn-sm mx-2"> <i
+                            class="fa fa-trash"></i> </a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{% endblock main-content %}

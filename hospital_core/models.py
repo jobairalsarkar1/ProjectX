@@ -1,7 +1,21 @@
 from django.db import models
 
+DEPARTMENT_CHOICES = [
+    ('CARDIOLOGY', 'Cardiology'),
+    ('NEUROLOGY', 'Neurology'),
+    ('ORTHOPEDICS', 'Orthopedics'),
+    ('GASTROENTEROLOGY', 'Gastroenterology'),
+    ('ONCOLOGY', 'Oncology'),
+    ('PULMONOLOGY', 'Pulmonology'),
+    ('OBSTETRICS', 'Obstetrics'),
+    ('PEDIATRICS', 'Pediatrics'),
+    ('OPHTHALMOLOGY', 'Ophthalmology'),
+    ('DERMATOLOGY', 'Dermatology'),
+]
+
+
 class Department(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, choices=DEPARTMENT_CHOICES)
     about = models.CharField(max_length=400, null=True, blank=True)
 
     def __str__(self) -> str:
