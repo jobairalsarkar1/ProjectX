@@ -24,6 +24,13 @@ class PatientRegistrationForm(forms.ModelForm):
         }
 
 
+class PatientUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Patient
+        fields = ['first_name', 'last_name',
+                  'phone', 'birth_date', 'profile_picture']
+
+
 class AppointMentForm(forms.ModelForm):
     class Meta:
         model = Appointment

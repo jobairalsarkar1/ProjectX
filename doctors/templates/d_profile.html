@@ -7,7 +7,9 @@
 <div class="doctor-content-container">
     <div class="doctor-profile-content-container">
         <div class="doctor-info">
-            <button type="button" class="profile-edit-btn">Edit</button>
+            <a href="{% url 'update_doctor_profile' %}">
+                <button type="button" class="profile-edit-btn">Edit</button>
+            </a>
             <div class="doctor-profile-image">
                 <img src="{{ doctor.profile_picture.url }}" alt="Profile.." class="doctor-profile-actual-img">
             </div>

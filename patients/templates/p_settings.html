@@ -4,25 +4,62 @@
 {% endblock %}
 
 {% block content %}
-<div class="user-content-container">
-    <h1>Settings</h1>
-    <ul class="upcomming-appointment-container">
-        {% for appointment in appointments %}
-        <li class="upcomming-appointment-list">
-            <div class="date-name">
-                <p>{{ appointment.date|date:"d, F, Y" }}</p>
-                <p>{{ appointment.doctor.fname }} {{ appointment.doctor.lname }}</p>
+<div class="patient-inbox-container">
+    <div class="patient-inbox">
+        <!-- update_profile.html -->
+        <form method="post" enctype="multipart/form-data" class="patient-profile-update">
+            <h3>Update Profile</h3>
+            {% csrf_token %}
+            <div class="update-form-input">
+                <label for="{{ form.specialty.id_for_label }}">Specialty:</label>
+                {{ form.specialty }}
             </div>
-            <div class="appointment-time">
-                {{ appointment.date|time:"h:i" }}
-                <p>{{ appointment.date|time:"A" }}</p>
+            <div class="update-form-input">
+                <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                {{ form.last_name }}
+                <!-- <input type="text"> -->
             </div>
-            <div class="manage-btn">
-                <button type="button" class="cancel-appointment">Cancel</button>
+            <div class="update-form-input">
+                <label for="{{ form.phone.id_for_label }}">Phone:</label>
+                {{ form.phone }}
+                <!-- <input type="text"> -->
             </div>
-        </li>
-        {% endfor %}
-    </ul>
+            <div class="update-form-input">
+                <label for="{{ form.birth_date.id_for_label }}">Birth Date:</label>
+                {{ form.birth_date }}
+                <!-- <input type="text"> -->
+            </div>
+            <div class="image-file">
+                <label for="{{ form.profile_picture.id_for_label }}">Profile Picture:</label>
+                <div class="actual-image-file">
+                    <p>Select Profile Picture</p>
+                    {{ form.profile_picture }}
+                    <!-- <input type="file"> -->
+                </div>
+            </div>
+            <button type="submit" class="update-profile-btn">Update Profile</button>
+        </form>
 
+    </div>
 </div>
+<!-- <h1>Settings</h1>
+<a href="{% url 'update_patient_profile' %}">Update Profile</a>
+
+<ul class="upcomming-appointment-container">
+    {% for appointment in appointments %}
+    <li class="upcomming-appointment-list">
+        <div class="date-name">
+            <p>{{ appointment.date|date:"d, F, Y" }}</p>
+            <p>{{ appointment.doctor.fname }} {{ appointment.doctor.lname }}</p>
+        </div>
+        <div class="appointment-time">
+            {{ appointment.date|time:"h:i" }}
+            <p>{{ appointment.date|time:"A" }}</p>
+        </div>
+        <div class="manage-btn">
+            <button type="button" class="cancel-appointment">Cancel</button>
+        </div>
+    </li>
+    {% endfor %}
+</ul> -->
 {% endblock %}

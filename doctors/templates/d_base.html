@@ -60,11 +60,11 @@
                             </a>
                         </li>
                         <li class="user-toggle-navigation-list-item">
-                            <a href="#" class="user-toggle-navigation-link">
+                            <a href="{% url 'doctor_patients_list' %}" class="user-toggle-navigation-link">
                                 <span class="material-symbols-outlined">
                                     report
                                 </span>
-                                Report
+                                Notify
                             </a>
                         </li>
                     </ul>
@@ -111,7 +111,7 @@
                         </a>
                     </li>
                     <li class="user-middle-sidebar-list-item">
-                        <a href="{% url 'doctors_settings' %}" class="user-middle-sidebar-list-item-link">
+                        <a href="{% url 'update_doctor_profile' %}" class="user-middle-sidebar-list-item-link">
                             <span class="material-symbols-outlined user-sidebar-icon">
                                 settings
                             </span>

@@ -5,7 +5,7 @@ from django.contrib.auth import logout
 # from .decorators import patient_required
 from .models import Patient, Appointment
 from doctors.models import Doctor, DoctorNotification
-from .forms import AppointMentForm
+from .forms import AppointMentForm, PatientUpdateForm
 from datetime import datetime
 
 
@@ -49,6 +49,24 @@ def patients_inbox(request):
         except Patient.DoesNotExist:
             pass
 
+    return redirect('PatientLogin')
+
+def update_patient_profile(request):
+    patient_id = request.session.get('patient_id')
+    patient = Patient.objects.get(id=patient_id)
+    if patient_id:
+        try:
+            patient = Patient.objects.get(id=patient_id)
+            if request.method == 'POST':
+                form = PatientUpdateForm(request.POST, request.FILES, instance=patient)
+                if form.is_valid():
+                    form.save()
+                    return redirect('patients_account')
+            else:
+                form = PatientUpdateForm()
+            return render(request, 'p_settings.html', {'form':form, 'patient':patient})
+        except Patient.DoesNotExist:
+            pass
     return redirect('PatientLogin')
 
 
