@@ -6,6 +6,8 @@ from doctors.models import Doctor
 from patients.models import Patient
 # from .models import Notification
 
+# from .models import Notification
+
 
 def landing_view(request):
     return render(request, 'landing.html')
