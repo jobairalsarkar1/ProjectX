@@ -4,11 +4,8 @@ from patients.forms import PatientRegistrationForm
 from django.contrib import messages
 from doctors.models import Doctor
 from patients.models import Patient
-<<<<<<< HEAD
-from .models import Notification
-=======
+
 # from .models import Notification
->>>>>>> 5d3e795c5a006da4b1fb513aedfb09e605a2f3e3
 
 
 def landing_view(request):
