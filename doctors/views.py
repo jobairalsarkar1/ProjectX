@@ -84,16 +84,6 @@ def doctor_settings(request):
             pass
     return redirect('DoctorLogin')
 
-# def authenticate_doctor(email, password):
-#     try:
-#         doctor = Doctor.objects.get(email=email)
-#         if doctor.password == password:
-#             return doctor
-#         else:
-#             return 'Invalid Password'
-#     except Doctor.DoesNotExist:
-#         return 'No Doctor with this Email.'
-
 
 def doctor_logout(request):
     logout(request)

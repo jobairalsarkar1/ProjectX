@@ -11,8 +11,8 @@
             <h3>Update Profile</h3>
             {% csrf_token %}
             <div class="update-form-input">
-                <label for="{{ form.specialty.id_for_label }}">Specialty:</label>
-                {{ form.specialty }}
+                <label for="{{ form.specialty.id_for_label }}">First Name :</label>
+                {{ form.first_name }}
             </div>
             <div class="update-form-input">
                 <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
