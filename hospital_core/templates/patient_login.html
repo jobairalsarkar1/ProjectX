@@ -15,6 +15,10 @@
             </button> -->
             {% csrf_token %}
             <h2>Login</h2>
+            <div class="user-info-links">
+                {% if error_message %}
+                <p style="color: red;">{{ error_message }}</p>
+                {% endif %}
             <div class="user-info-input">
                 <input type="email" name="email" placeholder="Email or Phone Number" required>
             </div>
