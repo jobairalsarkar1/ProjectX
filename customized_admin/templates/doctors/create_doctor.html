@@ -2,7 +2,7 @@
 
 {% block main-content %}
 <div class="container">
-    <form action="{% url 'doctors' %}" method="post">
+    <form action="{% url 'doctors' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}
         <button class="btn btn-primary btn-md my-2" type="submit">Create</button>

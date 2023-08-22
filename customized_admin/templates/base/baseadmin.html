@@ -241,29 +241,6 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-flask"></i>
-                <p>
-                  Laboratory
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="fa-solid fa-microscope nav-icon"></i>
-                    <p>Tests</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <i class="far fa-file-lines nav-icon"></i>
-                    <p>Reports</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-list-check"></i>
                 <p>
                   Management
@@ -272,13 +249,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{% url 'departments' %}" class="nav-link">
                     <i class="fa-solid fa-building-user nav-icon"></i>
                     <p>Departments</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{% url 'appointments' %}" class="nav-link">
                     <i class="far fa-calendar-check nav-icon"></i>
                     <p>Appointments</p>
                   </a>

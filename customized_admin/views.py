@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from doctors.models import Doctor
-from patients.models import Patient
+from patients.models import Patient, Appointment
+from hospital_core.models import Department
 from django.views import View
-from .forms import DoctorCreationForm, PatientCreationForm
+from .forms import *
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
@@ -33,7 +34,7 @@ class DoctorView(View):
         return render(request, 'doctors/doctors.html', {'doctors': doctors})
 
     def post(self, request):
-        form = DoctorCreationForm(request.POST)
+        form = DoctorCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('doctors')
@@ -45,11 +46,32 @@ class PatientView(View):
         return render(request, 'patients/patients.html', {'patients': patients})
 
     def post(self, request):
-        form = PatientCreationForm(request.POST)
+        form = PatientCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('patients')
 
+class DepartmentView(View):
+    def get(self, request):
+        departments = Department.objects.all()
+        return render(request, 'departments/departments.html', {'departments':departments})
+
+    def post(self, request):
+        form = DepartmentCreationForm(request.POST)
+        if form.is_valid():
+            form.save() 
+            return redirect('departments')
+        
+        return redirect('add_department')
+
+
+class AppointmentView(View):
+    def get(self, request):
+        appointments = Appointment.objects.all()
+        return render(request, 'appointments/appointments.html', {'appointments':appointments})
+
+    def post(self, request):
+        pass
 
 #################################################   Update views goes Here  ################################################
 
@@ -57,7 +79,8 @@ def doctor_update(request, id):
     doctor = Doctor.objects.get(id=id)
     form = DoctorCreationForm(instance=doctor)
     if request.method == "POST":
-        form = DoctorCreationForm(request.POST, instance=doctor)
+        form = DoctorCreationForm(request.POST, request.FILES,  instance=doctor)
+        print(form)
         form.save()
         return redirect('doctors')
     return render(request, 'doctors/update_doctor.html', {'form': form})
@@ -87,6 +110,17 @@ def doctor_delete_view(request, id):
     return redirect('doctors')
 
 
+def department_delete_view(request, id):
+    department = Department.objects.get(id=id)
+    department.delete()
+    return redirect('departments')
+
+def appointment_delete_view(request, id):
+    appointment = Appointment.objects.get(id=id)
+    appointment.delete()
+    return redirect('appointments')
+
+
 # Helpers View Goes Here
 def doctor_creation_view(request):
     return render(request, 'doctors/create_doctor.html', {'form': DoctorCreationForm()})
@@ -96,13 +130,16 @@ def patient_creation_view(request):
     return render(request, 'patients/create_patient.html', {'form': PatientCreationForm()})
 
 
-# Search
+def department_creation_view(request):
+    return render(request, 'departments/create_department.html', {'form': DepartmentCreationForm()})
 
+
+
+# Search
 
 def search_doctor(request):
     if request.method == 'POST':
         value = request.POST.get('value')
-        print("value", value)
         if not value:
             return redirect('doctors')
         searched_doctor = Doctor.objects.filter(Q(fname__icontains=value) | 
@@ -123,6 +160,13 @@ def search_patient(request):
 
     return render(request, 'patients/patients.html', {'patients': searched_patients})
 
+def search_appointment(request):
+    if request.method == 'POST':
+        value = request.POST.get('value')
+        if not value:
+            return redirect('appointments')
+        appointments = Appointment.objects.filter(Q(patient__first_name__icontains = value) | Q(patient__last_name__icontains = value) )
+    return render(request, 'appointments/appointments.html', {'appointments':appointments})
 #filter
 
 def filter_doctor(request):

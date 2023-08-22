@@ -1,6 +1,7 @@
 from django import forms
 from doctors.models import Doctor
 from patients.models import Patient
+from hospital_core.models import Department
 
 
 
@@ -16,6 +17,8 @@ class DoctorCreationForm(forms.ModelForm):
             'password':forms.TextInput(attrs={'class':'form-control', 'type':'password'}),
             'department':forms.Select(attrs={'class':'form-control'}),
             'specialty':forms.TextInput(attrs={'class':'form-control'}),
+            'profile_picture':forms.FileInput(attrs={'class':'form-control', 'type':'file'}),
+            'fees':forms.NumberInput(attrs={'class':'form-control'}),
         }
 
 
@@ -33,7 +36,18 @@ class PatientCreationForm(forms.ModelForm):
             'phone':forms.NumberInput(attrs={'class':'form-control'}),
             'password':forms.TextInput(attrs={'class':'form-control', 'type':'password'}),
             'birth_date':forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
+            'profile_picture':forms.FileInput(attrs={'class':'form-control py-1'}),
         }
 
-##filtering form 
+#Form handle Department Creation
+
+class DepartmentCreationForm(forms.ModelForm):
+    use_required_attribute = False
+    class Meta:
+        model = Department
+        fields = '__all__'
+        widgets = {
+            'name':forms.Select(attrs={"class":'form-control'}),
+            'about':forms.Textarea(attrs={'class':'form-control'})
+        }
 

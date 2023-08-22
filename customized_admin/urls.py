@@ -19,4 +19,15 @@ urlpatterns = [
     path('patients/update/<int:id>', views.patient_update, name = 'update_patient'),
     path('patients/delete/<int:id>', views.patient_delete_view, name="delete_patient"),
     path('patients/search/', views.search_patient, name="search_patient"),
+
+    #This Section Handles Department
+    path('departments/', views.DepartmentView.as_view(), name='departments'),
+    path('departments/delete/<int:id>', views.department_delete_view, name='delete_departments'),
+    path('department/add', views.department_creation_view, name='add_department'),
+
+    #This Section Handles Appointments
+    path('appointments/', views.AppointmentView.as_view(), name="appointments"),
+    path('appointments/search/', views.search_appointment, name="search_appointment"),
+    path('appointments/delete/<int:id>', views.appointment_delete_view, name="delete_appointment"),
+    
 ]
