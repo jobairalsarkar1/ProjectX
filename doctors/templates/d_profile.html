@@ -7,34 +7,54 @@
 <div class="doctor-content-container">
     <div class="doctor-profile-content-container">
         <div class="doctor-info">
-            <button type="button" class="profile-edit-btn">Edit</button>
+            <a href="{% url 'update_doctor_profile' %}">
+                <button type="button" class="profile-edit-btn">Edit</button>
+            </a>
             <div class="doctor-profile-image">
-                <img src="/static/icon/profile.jpg" alt="Profile.." class="doctor-profile-actual-img">
+                <img src="{{ doctor.profile_picture.url }}" alt="Profile.." class="doctor-profile-actual-img">
             </div>
             <div class="doctor-profile-info">
-                <p>Name: Jobair Al Sarkar</p>
+                <!-- <p>Name: Jobair Al Sarkar</p>
                 <p>Email: something@gmail.com</p>
                 <p>Blood Group: 0+ </p>
-                <p>Age : 21</p>
+                <p>Age : 21</p> -->
+                <b>
+                    <p>Name: {{ doctor.fname }} {{ doctor.lname }}</p>
+                </b>
+                <p>Email: {{ doctor.email }}</p>
+                <p>Department: {{ doctor.department.name }}</p>
+                <p>ID: {{Doctor.id}}</p>
+
             </div>
         </div>
         <div class="something-extra">
             <div class="total-count-info">
                 <h4 class="skill-set">Specility</h4>
-                <h3>Cardiologist</h3>
+                <!-- <h3>Cardiologist</h3> -->
+                <h3>{{ doctor.specialty }}</h3>
             </div>
             <div class="total-count-info">
                 <h4>Total Patients</h4>
-                <h2>0</h2>
+                <h2>{{ unique_patients_number }}</h2>
             </div>
         </div>
     </div>
     <div class="doctor-profile-content-container">
         <!-- <div class="user-dashboard-right-div"> -->
         <ul class="upcomming-appointment-container">
+            {% for appointment in appointments_done %}
             <li class="upcomming-appointment-list">
-                <!-- <a href="#" class="upcomming-appointment-link">
-                    </a> -->
+                <div class="date-name">
+                    <p>Date: {{ appointment.date|date:"d, F, Y" }}</p>
+                    <p>Patient: {{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</p>
+                </div>
+                <div class="appointment-time">
+                    {{ appointment.date|time:"h:i" }}
+                    <p>{{ appointment.date|time:"A" }}</p>
+                </div>
+            </li>
+            {% endfor %}
+            <!--             <li class="upcomming-appointment-list">
                 <div class="date-name">
                     <p>10, July, 2023</p>
                     <p>Dr. Ayesha Rahman</p>
@@ -48,8 +68,6 @@
                 </div>
             </li>
             <li class="upcomming-appointment-list">
-                <!-- <a href="#" class="upcomming-appointment-link">
-                    </a> -->
                 <div class="date-name">
                     <p>10, July, 2023</p>
                     <p>Dr. Ayesha Rahman</p>
@@ -63,8 +81,6 @@
                 </div>
             </li>
             <li class="upcomming-appointment-list">
-                <!-- <a href="#" class="upcomming-appointment-link">
-                    </a> -->
                 <div class="date-name">
                     <p>10, July, 2023</p>
                     <p>Dr. Ayesha Rahman</p>
@@ -78,8 +94,6 @@
                 </div>
             </li>
             <li class="upcomming-appointment-list">
-                <!-- <a href="#" class="upcomming-appointment-link">
-                    </a> -->
                 <div class="date-name">
                     <p>10, July, 2023</p>
                     <p>Dr. Ayesha Rahman</p>
@@ -93,8 +107,6 @@
                 </div>
             </li>
             <li class="upcomming-appointment-list">
-                <!-- <a href="#" class="upcomming-appointment-link">
-                    </a> -->
                 <div class="date-name">
                     <p>10, July, 2023</p>
                     <p>Dr. Ayesha Rahman</p>
@@ -106,7 +118,7 @@
                 <div class="manage-btn">
                     <button type="button" class="cancel-appointment">Cancel</button>
                 </div>
-            </li>
+            </li> -->
         </ul>
         <!-- </div> -->
     </div>

@@ -4,7 +4,30 @@
 {% endblock %}
 
 {% block content %}
-<div class="user-content-container">
-    Settings
+<div class="patient-inbox-container">
+    <div class="patient-inbox">
+        <!-- update_profile.html -->
+        <form method="post" enctype="multipart/form-data" class="patient-profile-update">
+            <h3>Update Profile</h3>
+            {% csrf_token %}
+            <div class="update-form-input">
+                <label for="{{ form.specialty.id_for_label }}">Specialty:</label>
+                {{ form.specialty }}
+            </div>
+            <div class="image-file">
+                <label for="{{ form.profile_picture.id_for_label }}">Profile Picture:</label>
+                <div class="actual-image-file">
+                    <p>Select Profile Picture</p>
+                    {{ form.profile_picture }}
+                </div>
+            </div>
+            <div class="update-form-input">
+                <label for="{{ form.fees.id_for_label }}">Fees:</label>
+                {{ form.fees }}
+            </div>
+            <button type="submit" class="update-profile-btn">Update Profile</button>
+        </form>
+
+    </div>
 </div>
 {% endblock %}

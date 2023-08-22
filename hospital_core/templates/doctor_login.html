@@ -14,7 +14,12 @@
                 </span>
             </button> -->
             {% csrf_token %}
-            <h2>Login</h2>
+            <h2>Patient Login</h2>
+            <div class="user-info-links">
+                {% if error_message %}
+                <p style="color: red;">{{ error_message }}</p>
+                {% endif %}
+            </div>
             <div class="user-info-input">
                 <input type="email" name="email" placeholder="Email or Phone Number" required>
             </div>
@@ -27,13 +32,10 @@
             </div>
             <button type="submit" class="sign-in-btn all-btn">Login</button>
             <div class="user-info-links">
-                <p>Don't have an account? <a href="{% url 'Register' %}">Create One.</a></p>
+                <p>The authority will Provide. <a href="#">Contact Them</a></p>
                 <a href="#">Forgot Password</a>
             </div>
         </form>
-        {% if error_message %}
-        <p>{{ error_message }}</p>
-        {% endif %}
     </div>
     <!-- </dialog> -->
 </div>

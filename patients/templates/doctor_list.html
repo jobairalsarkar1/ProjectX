@@ -1,0 +1,24 @@
+{% extends 'p_base.html' %}
+{% block title %}
+<title>Make Reservation</title>
+{% endblock %}
+
+{% block content %}
+<div class="patient-inbox-container">
+    <div class="patient-inbox">
+        <!-- <div class="doctor-list"> -->
+        {% for doctor in doctors %}
+        <div class="doctors-list-item">
+            <div class="doctor-info">
+                <h3 class="doctor-name">Name: {{ doctor.fname }} {{ doctor.lname }}</h3>
+                <p>Specility: {{ doctor.specialty }}</p>
+                <p>Department: Medicine</p>
+            </div>
+            <div class="reserve-doctor">
+                <a href="{% url 'reserve_appointment' doctor.id %}">Reserve Appointment</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
