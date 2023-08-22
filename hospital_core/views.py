@@ -4,7 +4,11 @@ from patients.forms import PatientRegistrationForm
 from django.contrib import messages
 from doctors.models import Doctor
 from patients.models import Patient
+<<<<<<< HEAD
 from .models import Notification
+=======
+# from .models import Notification
+>>>>>>> 5d3e795c5a006da4b1fb513aedfb09e605a2f3e3
 
 
 def landing_view(request):
@@ -89,36 +93,36 @@ def no_access(request):
     return render(request, '404.html')
 
 
-def compose_notification(request, receiver_type, receiver_id):
-    if request.method == 'POST':
-        message = request.POST.get('message')
-        sender_id = request.session.get(
-            'patient_id') or request.session.get('doctor_id')
+# def compose_notification(request, receiver_type, receiver_id):
+#     if request.method == 'POST':
+#         message = request.POST.get('message')
+#         sender_id = request.session.get(
+#             'patient_id') or request.session.get('doctor_id')
 
-        if sender_id:
-            sender_type = 'patient' if request.session.get(
-                'patient_id') else 'doctor'
-            sent_by_patient = sender_type == 'patient'
+#         if sender_id:
+#             sender_type = 'patient' if request.session.get(
+#                 'patient_id') else 'doctor'
+#             sent_by_patient = sender_type == 'patient'
 
-            if receiver_type == 'doctor':
-                receiver_model = Doctor
-            else:
-                receiver_model = Patient
+#             if receiver_type == 'doctor':
+#                 receiver_model = Doctor
+#             else:
+#                 receiver_model = Patient
 
-            # receiver = receiver_model.objects.get(id=receiver_id)
-            Notification.objects.create(
-                sender_id=sender_id, receiver_id=receiver_id, sent_by_patient=sent_by_patient, message=message)
-            return redirect('Blog')
-    return render(request, 'compose_notification.html', {'receiver_type': receiver_type, 'receiver_id': receiver_id})
-    doctor_id = request.session.get('doctor_id')
-    if doctor_id:
-        try:
-            doctor = Doctor.objects.get(id=doctor_id)
-            notifications = Notification.objects.filter(
-                receiver_id=doctor_id, sent_by_patient=True)
-            return render(request, 'd_inbox.html', {'doctor': doctor, 'notifications': notifications})
-        except Doctor.DoesNotExist:
-            pass
-    return redirect('DoctorLogin')
+#             # receiver = receiver_model.objects.get(id=receiver_id)
+#             Notification.objects.create(
+#                 sender_id=sender_id, receiver_id=receiver_id, sent_by_patient=sent_by_patient, message=message)
+#             return redirect('Blog')
+#     return render(request, 'compose_notification.html', {'receiver_type': receiver_type, 'receiver_id': receiver_id})
+#     doctor_id = request.session.get('doctor_id')
+#     if doctor_id:
+#         try:
+#             doctor = Doctor.objects.get(id=doctor_id)
+#             notifications = Notification.objects.filter(
+#                 receiver_id=doctor_id, sent_by_patient=True)
+#             return render(request, 'd_inbox.html', {'doctor': doctor, 'notifications': notifications})
+#         except Doctor.DoesNotExist:
+#             pass
+#     return redirect('DoctorLogin')
 
 

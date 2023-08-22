@@ -4,6 +4,12 @@ from doctors.models import Doctor
 from django import forms
 
 
+class DoctorUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Doctor
+        fields = ['specialty', 'profile_picture', 'fees']
+
+
 class NotificationForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea)
 
