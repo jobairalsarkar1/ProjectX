@@ -4,6 +4,7 @@ from patients.forms import PatientRegistrationForm
 from django.contrib import messages
 from doctors.models import Doctor
 from patients.models import Patient
+# from .models import Notification
 
 # from .models import Notification
 
