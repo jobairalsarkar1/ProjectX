@@ -31,7 +31,7 @@ def PatientRegister(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             if Patient.objects.filter(email=email).exists():
-                messages.error(request, 'This Email is already Used.')
+                messages.warning(request, 'This Email is already Used.')
             else:
                 password = form.cleaned_data['password']
                 retype_password = form.cleaned_data['retype_password']
@@ -40,7 +40,7 @@ def PatientRegister(request):
                     form.save()
                     return redirect('PatientLogin')
                 else:
-                    messages.error(request, 'Password did not matched.')
+                    messages.warning(request, 'Password did not matched.')
     else:
         form = PatientRegistrationForm()
     return render(request, 'register.html', {'form': form})
@@ -59,7 +59,8 @@ def doctor_login_view(request):
 
         if check_password(password, doctor.password):
             request.session['doctor_id'] = doctor.id
-            return redirect('doctors_dashboard')
+            return redirect('doctors_profile')
+            # return redirect('doctors_dashboard')
         else:
             error_message = 'Incorrect password'
             return render(request, 'doctor_login.html', {'error_message': error_message})

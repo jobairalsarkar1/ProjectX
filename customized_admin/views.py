@@ -8,6 +8,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 
@@ -36,8 +37,13 @@ class DoctorView(View):
     def post(self, request):
         form = DoctorCreationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('doctors')
+            data = form.save(commit=False)
+            if Doctor.objects.filter(email = data.email):
+                messages.warning(request, "Doctor with this Mail Already Exits")
+                return redirect('add_doctor')
+            else:
+                data.save()
+        return redirect('doctors')
 
 
 class PatientView(View):

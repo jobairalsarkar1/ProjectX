@@ -30,7 +30,7 @@
             </div>
             <div class="user-info-input">
                 <!-- <input type="password" placeholder="Password" required> -->
-                {{form.password}}        
+                {{form.password}}
             </div>
             <div class="user-info-input">
                 <!-- <input type="password" placeholder="Re-type Password" required> -->
@@ -45,6 +45,22 @@
                 <p>Already have an account? <a href="#">Sign In.</a></p>
                 <p><a href="#">Forgot Password</a></p>
             </div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <!-- <div class="user-info-input">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div> -->
         </form>
     </div>
 </div>

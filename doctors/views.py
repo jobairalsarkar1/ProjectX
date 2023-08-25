@@ -55,7 +55,7 @@ def update_doctor_profile(request):
                     return redirect('doctors_profile')
             else:
                 form = DoctorUpdateForm(instance=doctor)
-            return render(request, 'd_settings.html', {'form': form, 'doctor':doctor})
+            return render(request, 'd_settings.html', {'form': form, 'doctor': doctor})
         except Doctor.DoesNotExist:
             pass
 

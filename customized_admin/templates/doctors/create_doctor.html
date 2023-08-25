@@ -2,6 +2,11 @@
 
 {% block main-content %}
 <div class="container">
+    {%if messages%}
+    {%for message in messages%}
+    <h3 class="bg-{{message.tags}}">{{message}}</h3>
+    {%endfor%}
+    {%endif%}
     <form action="{% url 'doctors' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}
