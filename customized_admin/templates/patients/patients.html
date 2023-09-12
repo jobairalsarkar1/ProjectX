@@ -1,0 +1,47 @@
+{%extends 'base/baseadmin.html' %}
+
+{%block title%}Patients{%endblock title%}
+
+{% block main-content %}
+<div class="container-fluid">
+    <div class="utility d-flex justify-content-between align-items-center">
+        <div class="search">
+            <form method="post" action="{% url 'search_patient' %}" class="d-flex align-items-center">
+                {% csrf_token %}
+                <input type="text" name="value" id="" placeholder="Search">
+                <button type="submit" class="btn btn-sm btn-success mx-1"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <a href="{%url 'add_patient' %}" class="btn btn-success btn-md my-2">Add<i class="fa fa-plus ml-1"></i></a>
+    </div>
+    <table class="table table-hover text-nowrap">
+        <thead>
+            <tr>
+                <th>Count</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Birth Date</th>
+                <th>Modify</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{patient}}</td>
+                <td>{{patient.email}}</td>
+                <td>{{patient.phone}}</td>
+                <td>{{patient.birth_date}}</td>
+                <td>
+                    <a href="{% url 'update_patient' patient.id %}" class="btn btn-warning btn-sm mx-2"> <i
+                            class="fa fa-edit"></i> </a>
+                    <a href="{% url 'delete_patient' patient.id %}" class="btn btn-danger btn-sm mx-2"> <i
+                            class="fa fa-trash"></i> </a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{% endblock main-content %}
