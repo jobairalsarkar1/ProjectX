@@ -24,7 +24,6 @@ urlpatterns = [
     path('', include('hospital_core.urls')),
     path('patients/', include('patients.urls')),
     path('doctors/', include('doctors.urls')),
-    path('adminsite/', include('customized_admin.urls'))
 ]
 
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect
 from doctors.models import Doctor
 from patients.models import Patient, Appointment
@@ -8,6 +9,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 
@@ -36,8 +38,13 @@ class DoctorView(View):
     def post(self, request):
         form = DoctorCreationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('doctors')
+            data = form.save(commit=False)
+            if Doctor.objects.filter(email = data.email):
+                messages.warning(request, "Doctor with this Mail Already Exits")
+                return redirect('add_doctor')
+            else:
+                data.save()
+        return redirect('doctors')
 
 
 class PatientView(View):
@@ -175,3 +182,8 @@ def filter_doctor(request):
         doctors = Doctor.objects.filter(department__name__iexact = option)
         print(doctors)
     return render(request, 'doctors/doctors.html', {'doctors': doctors})
+=======
+from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> parent of 35520cb (Merge pull request #3 from undefined2001/test)
