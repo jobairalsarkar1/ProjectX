@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect
 from doctors.models import Doctor
 from patients.models import Patient, Appointment
@@ -181,3 +182,8 @@ def filter_doctor(request):
         doctors = Doctor.objects.filter(department__name__iexact = option)
         print(doctors)
     return render(request, 'doctors/doctors.html', {'doctors': doctors})
+=======
+from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> parent of 35520cb (Merge pull request #3 from undefined2001/test)
